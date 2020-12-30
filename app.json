@@ -1,0 +1,12 @@
+{
+  "name": "Chords",
+  "displayName": "Chords",
+  "expo": {
+    "name": "Chords",
+    "slug": "Chords",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
