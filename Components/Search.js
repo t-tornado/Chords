@@ -5,30 +5,32 @@ import {
   TextInput,
   StatusBar,
   Dimensions,
-  FlatList
+  FlatList,
 } from "react-native";
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 import { AntDesign } from "react-native-vector-icons";
-import Footer from '../FlatlistFooter'
-import {useSetKeyword} from '../../Context/TarckContext'
-import {getSearchedSongs, getSearchKeyword} from '../../Redux/Selectors/PlaySelector'
-import { seven } from "../../Config/Dimensions";
-import { Colors } from "../../assets/colors";
-import RenderList from './SearchRenderComponent'
+import Footer from "./FlatlistFooter";
+import { useSetKeyword } from "../Context/TarckContext";
+import {
+  getSearchedSongs,
+  getSearchKeyword,
+} from "../Redux/Selectors/PlaySelector";
+import { seven } from "../Config/Dimensions";
+import { Colors } from "../assets/colors";
+import RenderList from "./Online/SearchRenderComponent";
 
 const { height, width } = Dimensions.get("window");
 const SEARCHBAR_W = width * 0.95;
 const SEARCHBAR_H = height * 0.04;
-const SEC_SEARCHBAR_WIDTH = width * 0.88101
+const SEC_SEARCHBAR_WIDTH = width * 0.88101;
 
-
-const Search = ({searchedSongs, searchKeyword}) => {
+const Search = ({ searchedSongs, searchKeyword }) => {
   let { container, searchBar, searchContent } = styles;
-  const keyWordFunction = useSetKeyword()
+  const keyWordFunction = useSetKeyword();
   const [text, setText] = useState("");
 
   const onInput = (value) => {
-    keyWordFunction(value)
+    keyWordFunction(value);
     setText(value);
   };
 
@@ -51,28 +53,28 @@ const Search = ({searchedSongs, searchKeyword}) => {
           style={{ alignSelf: "center" }}
         />
         <TextInput
-          placeholder="Search Downloaded Song By Title"
+          placeholder="Search Song By Title"
           placeholderTextColor={Colors.active_top_tab}
           value={text}
           multiline={false}
-          style={[searchBar, {color:'#ffffff', width: SEC_SEARCHBAR_WIDTH, padding: 0}]}
+          style={[
+            searchBar,
+            { color: "#ffffff", width: SEC_SEARCHBAR_WIDTH, padding: 0 },
+          ]}
           onChangeText={(value) => onInput(value)}
-          onChange={()=> {
-            keyWordFunction(text)
+          onChange={() => {
+            keyWordFunction(text);
           }}
           selectTextOnFocus={true}
         />
       </View>
-      <View style={searchContent} >
+      <View style={searchContent}>
         <FlatList
-        data={searchedSongs}
-        ListFooterComponent={()=> <Footer />}
-        renderItem={({item})=> (
-          <RenderList item={item} />
-
-        )}
+          data={searchedSongs}
+          ListFooterComponent={() => <Footer />}
+          renderItem={({ item }) => <RenderList item={item} />}
         />
-              </View>
+      </View>
       <StatusBar
         backgroundColor="transparent"
         translucent={true}
@@ -94,21 +96,20 @@ const styles = StyleSheet.create({
     height: SEARCHBAR_H,
     borderRadius: seven,
     backgroundColor: Colors.bottom_tabbar,
-    marginBottom: SEARCHBAR_H
+    marginBottom: SEARCHBAR_H,
   },
   searchContent: {
     width: width,
-    flex:1,
+    flex: 1,
     backgroundColor: "transparent",
   },
 });
 
-const mapStore  = (state) => {
-
+const mapStore = (state) => {
   return {
-    searchKeyword : getSearchKeyword(state.player),
-    searchedSongs: getSearchedSongs(state,state.player.searchKeyword)
-  }
-}
+    searchKeyword: getSearchKeyword(state.player),
+    searchedSongs: getSearchedSongs(state, state.player.searchKeyword),
+  };
+};
 
-export default connect(mapStore)(Search)
+export default connect(mapStore)(Search);

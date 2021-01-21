@@ -1,11 +1,10 @@
-import * as actionType from "../actionTypes"
+import * as actionType from "../actionTypes";
 
 export function playSong() {
   return {
     type: actionType.PLAY_SONG,
   };
 }
-
 
 export function pauseSong() {
   return {
@@ -14,133 +13,137 @@ export function pauseSong() {
 }
 
 export function runPlayer() {
-    return {
-        type: actionType.RUN_PLAYER,
-    }
+  return {
+    type: actionType.RUN_PLAYER,
+  };
 }
 
 export function loadApp() {
   return {
-    type: actionType.LOAD_APP
-  }
+    type: actionType.LOAD_APP,
+  };
 }
 
 export function setKeyword(keyword) {
   return {
     type: actionType.SET_SEARCH_KEYWORD,
-    payload: keyword
-  }
+    payload: keyword,
+  };
 }
 
-export function loadPlayer(){
+export function loadPlayer() {
   return {
-    type: actionType.LOAD_PLAYER
-  }
+    type: actionType.LOAD_PLAYER,
+  };
 }
 
 export function refreshPlayer() {
   return {
-    type: actionType.REFRESH_PLAYER
-  }
+    type: actionType.REFRESH_PLAYER,
+  };
 }
 
 export const setArtwork = (artwork) => {
   return {
     type: actionType.SET_ARTWORK,
-    payload: artwork
-  }
-}
-
-
+    payload: artwork,
+  };
+};
 
 export const loadWebSongs = () => {
   return {
-    type: actionType.LOAD_WEB_SONGS
-  }
-}
-
+    type: actionType.LOAD_WEB_SONGS,
+  };
+};
 
 export const loadDownloadedSongs = () => {
   return {
-    type: actionType.LOAD_DOWNLOADED_SONGS
-  }
-}
+    type: actionType.LOAD_DOWNLOADED_SONGS,
+  };
+};
 
 export const resetLoadedStates = () => {
   return {
-    type: actionType.RESET_PLAYER_LOADED_STATES
-  }
-}
+    type: actionType.RESET_PLAYER_LOADED_STATES,
+  };
+};
 
 export const openMax = () => {
   return {
-    type :actionType.OPEN_MAX
-  }
-}
+    type: actionType.OPEN_MAX,
+  };
+};
 
 export const closeMax = () => {
   return {
-    type :actionType.CLOSE_MAX
-  }
-}
+    type: actionType.CLOSE_MAX,
+  };
+};
 
 export const launchOnline = () => {
   return {
-    type: actionType.LAUNCH_ONLINE
-  }
-}
+    type: actionType.LAUNCH_ONLINE,
+  };
+};
 
 export const launchOffline = () => {
   return {
-    type: actionType.LAUNCH_OFFLINE
-  }
-}
+    type: actionType.LAUNCH_OFFLINE,
+  };
+};
 
 export const likeSongSuccess = () => {
   return {
-    type: actionType.LIKE_SONG_SUCCESS
-  }
-}
+    type: actionType.LIKE_SONG_SUCCESS,
+  };
+};
 
 export const likeSongFailed = () => {
   return {
-    type: actionType.LIKE_SONG_FAILURE
-  }
-}
+    type: actionType.LIKE_SONG_FAILURE,
+  };
+};
 
 export const unlikeSongSuccess = () => {
   return {
-    type: actionType.UNLIKE_SONG_SUCCESS
-  }
-}
- 
+    type: actionType.UNLIKE_SONG_SUCCESS,
+  };
+};
+
 export const unlikeSongFailed = () => {
   return {
-    type: actionType.UNLIKE_SONG_FAILURE
-  }
-}
+    type: actionType.UNLIKE_SONG_FAILURE,
+  };
+};
 
 export const resetLikeUnlike = () => {
   return {
-    type: actionType.RESET_LIKE_UNLIKE
-  }
-}
+    type: actionType.RESET_LIKE_UNLIKE,
+  };
+};
 
 export const openQueue = () => {
   return {
-    type: actionType.OPEN_QUEUE 
-  }
-}
+    type: actionType.OPEN_QUEUE,
+  };
+};
 
 export const closeQueue = () => {
   return {
-    type: actionType.CLOSE_QUEUE
-  }
-}
+    type: actionType.CLOSE_QUEUE,
+  };
+};
 
 export const updateQueue = (queue) => {
   return {
-    type:actionType.UPDATE_QUEUE,
-    payload: queue
-  }
-}
+    type: actionType.UPDATE_QUEUE,
+    payload: queue,
+  };
+};
+
+export const updateBottomNavBarState = (state) => {
+  return {
+    type: actionType.UPDATE_NAVBAR_STATE,
+    payload: state,
+  };
+};

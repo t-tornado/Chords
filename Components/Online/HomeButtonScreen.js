@@ -1,81 +1,70 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  StatusBar,
-  Dimensions,
-  Text,
-} from "react-native";
+import { StyleSheet, View, StatusBar, Dimensions, Text } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 //Screens
 import HymnsScreen from "./HomeScreens/HymnsScreen";
-import KelenchaScreen from './HomeScreens/Kelencha'
-import AnthemsScreen from './HomeScreens/AnthemsScreen'
-import ClassicalsScreen from './HomeScreens/ClassicalsScreen'
-import EasterAnthemsScreen from './HomeScreens/EasterAnthems'
-import ChristmasAnthemsScreen from './HomeScreens/ChristmasAntems'
+import KelenchaScreen from "./HomeScreens/Kelencha";
+import AnthemsScreen from "./HomeScreens/AnthemsScreen";
+import ClassicalsScreen from "./HomeScreens/ClassicalsScreen";
+import EasterAnthemsScreen from "./HomeScreens/EasterAnthems";
+import ChristmasAnthemsScreen from "./HomeScreens/ChristmasAntems";
 import { Colors } from "../../assets/colors";
-import TopTabBar from '../TopTabBar'
+import TopTabBar from "../TopNavBar";
 import ChoralBlues from "./HomeScreens/ChoralBlues";
 
-
 const { height, width } = Dimensions.get("window");
-
 
 const Ops = createMaterialTopTabNavigator(
   {
     anthems: {
       screen: AnthemsScreen,
       params: {
-        title: 'Anthems'
-      }
+        title: "Anthems",
+      },
     },
     christmasAnthems: {
       screen: ChristmasAnthemsScreen,
       params: {
-        title: 'Christmas Anthems'
-      }
+        title: "Christmas Anthems",
+      },
     },
-   
+
     easterAnthems: {
-      screen: EasterAnthemsScreen,  
+      screen: EasterAnthemsScreen,
       params: {
-        title: 'Easter Anthems'
-      }
+        title: "Easter Anthems",
+      },
     },
     classical: {
-      screen:ClassicalsScreen,
+      screen: ClassicalsScreen,
       params: {
-        title: 'Classical Music'
-      }
+        title: "Classical Music",
+      },
     },
     kelencha: {
       screen: KelenchaScreen,
-     params:{
-       title: 'Choral Hilifes'
-     }
+      params: {
+        title: "Choral Hilifes",
+      },
     },
     choraBlues: {
-        screen: ChoralBlues,
-        params: {
-          title: 'Slow Rock'
-        }
+      screen: ChoralBlues,
+      params: {
+        title: "Slow Rock",
+      },
     },
     hymns: {
       screen: HymnsScreen,
       params: {
-        title: 'Hymns'
-      }
+        title: "Hymns",
+      },
     },
-   
-    
-},
-{
-  tabBarComponent: (props) => <TopTabBar {...props} />
-}
-)
-
+  },
+  {
+    tabBarComponent: (props) => <TopTabBar {...props} />,
+  }
+);
 
 const Container = createAppContainer(Ops);
 
@@ -98,12 +87,11 @@ const styles = StyleSheet.create({
   albums: {
     width: width,
     height: height,
-    backgroundColor:Colors.screens_Background
+    backgroundColor: Colors.screens_Background,
   },
-  
+
   container: {
     flex: 1,
     alignItems: "center",
   },
-  
 });
