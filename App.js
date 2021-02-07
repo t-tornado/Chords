@@ -5,7 +5,7 @@ import appStore from "./Redux/Store";
 import Root from './Root'
 
 
-//
+// To prevenet yellow timer error logs...
 import { Platform, InteractionManager } from 'react-native';
 const _setTimeout = global.setTimeout;
 const _clearTimeout = global.clearTimeout;
