@@ -71,7 +71,7 @@ const Card = ({
   const songsFetchedState = useSongsFetchedState();
   const playerState = usePlayerLoadedState();
   const skipOnline = useSkipOnline();
-  const [start, setStart] = React.useState();
+  const [start, setStart] = React.useState(false);
   const [downloadProgress, setProgress] = React.useState(0);
 
   const openMax = useSetStoreOpenMax();
@@ -88,6 +88,37 @@ const Card = ({
       })
         .promise.then(() => {
           // DOWNLOAD SONG
+          RNFS.downloadFile({
+            toFile:
+              downloadSongsPath +
+              `/Aadd${title}Aa${artist}Aa10000000000${id}Aa${genre}Aa${duration}Aa${composer}Aa.mp3`,
+            fromUrl: url,
+            progressInterval: 500,
+            progressDivider: 5,
+            progress: (res) => {
+              const value = Math.floor(
+                (res.bytesWritten / res.contentLength) * 100
+              );
+              setProgress(value);
+            },
+          })
+            .promise.then((res) => {
+              downloadSuccess(
+                title,
+                id,
+                artist,
+                genre,
+                duration,
+                composer,
+                numDownloads,
+                true
+              );
+            })
+            .catch((err) => {
+              downloadFailed();
+            });
+        })
+        .catch((e) => {
           RNFS.downloadFile({
             toFile:
               downloadSongsPath +
@@ -110,15 +141,13 @@ const Card = ({
                 genre,
                 duration,
                 composer,
-                numDownloads
+                numDownloads,
+                false
               );
             })
             .catch((err) => {
               downloadFailed();
             });
-        })
-        .catch((e) => {
-          null;
         });
     }
     return () => (clean = false);
@@ -161,14 +190,26 @@ const Card = ({
         />
       </View>
       <View style={cardDetails}>
-        <View style={{ height: height * 0.07 }}>
+        <View
+          ellipsizeMode="clip"
+          numberOfLines={1}
+          style={{ height: height * 0.07 }}
+        >
           <Text style={{ color: Colors.download_card_title, fontSize: 12 }}>
             {title}
           </Text>
-          <Text style={{ color: Colors.download_card_composer, fontSize: 12 }}>
+          <Text
+            ellipsizeMode="clip"
+            numberOfLines={1}
+            style={{ color: Colors.download_card_composer, fontSize: 12 }}
+          >
             {composer}
           </Text>
-          <Text style={{ color: Colors.download_card_choir, fontSize: 12 }}>
+          <Text
+            ellipsizeMode="clip"
+            numberOfLines={1}
+            style={{ color: Colors.download_card_choir, fontSize: 12 }}
+          >
             {artist}
           </Text>
         </View>
@@ -295,7 +336,8 @@ const mapDispatch = (dispatch) => {
       genre,
       duration,
       composer,
-      numDownloads
+      numDownloads,
+      artwork
     ) =>
       dispatch(
         downloadSongSuccess(
@@ -305,7 +347,8 @@ const mapDispatch = (dispatch) => {
           genre,
           duration,
           composer,
-          numDownloads
+          numDownloads,
+          artwork
         )
       ),
     downloadFailed: () => dispatch(downloadSongFailure()),

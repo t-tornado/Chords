@@ -61,28 +61,29 @@ export default function CardWithoutDownloadButton({
     <TouchableOpacity style={card} activeOpacity={1} onPress={toPlay}>
       <View style={cardCover}>
         <Image
-          // source={artWork == undefined ?require('../assets/alternate_image.jpg') : artWork }
           source={
-            artWork == undefined
+            artWork == ""
+              ? require("../../assets/alternate_image.jpg")
+              : artWork == null
+              ? require("../../assets/alternate_image.jpg")
+              : artWork == undefined
               ? require("../../assets/alternate_image.jpg")
               : { uri: artWork }
           }
-          // source={{uri:artWork}}
-          // source={require('../assets/alternate_image.jpg')}
           style={cardCoverImage}
         />
       </View>
       <View style={cardDetails}>
         <Text
           numberOfLines={1}
-          ellipsizeMode="tail"
+          ellipsizeMode="clip"
           style={{ color: Colors.download_card_title }}
         >
           {title}
         </Text>
         <Text
           numberOfLines={1}
-          ellipsizeMode="tail"
+          ellipsizeMode="clip"
           style={{
             color: Colors.download_card_composer,
             fontSize: 11,
@@ -92,7 +93,7 @@ export default function CardWithoutDownloadButton({
         </Text>
         <Text
           numberOfLines={1}
-          ellipsizeMode="tail"
+          ellipsizeMode="clip"
           style={{ color: Colors.download_card_choir }}
         >
           {artist}

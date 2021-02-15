@@ -78,15 +78,25 @@ const Card = ({
         />
       </View>
       <View style={cardDetails}>
-        <Text style={{ color: Colors.download_card_title, fontSize: twelve }}>
+        <Text
+          ellipsizeMode="clip"
+          numberOfLines={1}
+          style={{ color: Colors.download_card_title, fontSize: twelve }}
+        >
           {title}
         </Text>
         <Text
+          ellipsizeMode="clip"
+          numberOfLines={1}
           style={{ color: Colors.download_card_composer, fontSize: twelve }}
         >
           {composer}
         </Text>
-        <Text style={{ color: Colors.download_card_choir, fontSize: twelve }}>
+        <Text
+          ellipsizeMode="clip"
+          numberOfLines={1}
+          style={{ color: Colors.download_card_choir, fontSize: twelve }}
+        >
           {artist}
         </Text>
         <View style={cardDetailsIcons}>

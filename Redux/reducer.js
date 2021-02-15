@@ -74,11 +74,53 @@ let playerState = {
     likes: 0,
     artwork: "",
   },
+  playlist1: {
+    name: "",
+    data: [],
+  },
 };
 
 /*
 For Downloads
 */
+// export const playlistReducer = (state = playerState, action) => {
+//   if (action.type == actionType.CREATE_PLAYLIST) {
+//     return {
+//       ...state,
+//       playlist1: {
+//         name:action.payload.name,
+//       }
+//     };
+//   }
+//  else if(action.type == actionType.RENAME_PLAYLIST){
+//       return{
+//         ...state,
+//         playlist1: {
+//         ...state.playlist1,
+//         name: action.payload
+//         }
+//       }
+//   }
+//  else if(action.type == actionType.DELETE_PLAYLIST){
+//    return {
+//      ...state,
+//      playlist1: {
+//        name:'',
+//        data: []
+//      }
+//    }
+//  }
+//  else if(action.type == actionType.ADD_SONG_TO_PLAYLIST){
+//    return {
+//      ...state,
+//      playlist1: {
+//        ...state.playlist1,
+//        data: action.payload.data
+//     }
+//    }
+//  }
+//   return state;
+// };
 
 export const downlaodsReducer = (state = playerState, action) => {
   if (action.type == actionType.DOWNLOAD_SONG_REQUEST) {
