@@ -8,7 +8,9 @@ import {
   Dimensions,
   StatusBar,
 } from 'react-native';
-// import { AntDesign, Foundation } from "react-native-vector-icons";
+// icons
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import Foundation from 'react-native-vector-icons/Foundation'
 // import {
 //   useSetStoreOpenMax,
 //   usePlayerLoadedState,
@@ -33,6 +35,7 @@ const Card = ({artist, title, id, composer, numDownloads, artwork, likes}) => {
     cardDetailsIcons,
     cardIcons,
     iconContainer,
+    downloadButton
   } = styles;
   // const skip = useSkipOffline();
   // const downloadsLoadedState = useDownloadsLoadedState();
@@ -92,61 +95,59 @@ const Card = ({artist, title, id, composer, numDownloads, artwork, likes}) => {
         <View style={cardDetailsIcons}>
           <View
             style={{
-              width: width * 0.15,
+              paddingRight: width_numbers[5],
+              paddingVertical: width_numbers[2],
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            {/* <Foundation
+            <Foundation
               name="heart"
-              color={Colors.download_card_icons}
+              color={'red'}
               size={width_numbers[13]}
-              style={{paddingHorizontal: width_numbers[5]}}
-            /> */}
-            <View style={{padding:5, borderRadius:3,marginHorizontal: 2, backgroundColor: 'red'}} />
+              style={{paddingRight: width_numbers[3]}}
+            />
             <Text
               style={{
                 color: '#ffffff',
                 fontSize: width_numbers[10],
               }}>
-              {likes > 999 ? `${(likes / 1000).toFixed(1)} K` : likes}
+              {likes > 999 ? likes > 999999 ? `${(likes / 1000000).toFixed(1)}M` : `${(likes / 1000).toFixed(1)} K` : likes}
             </Text>
           </View>
           <View
             style={{
-              width: width * 0.1,
+              paddingHorizontal: width_numbers[5],
+              paddingVertical: width_numbers[2],
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            {/* <AntDesign
+            <AntDesign
               name="download"
-              color={Colors.download_card_icons}
+              color={'#5488d3'}
               size={width_numbers[13]}
-              style={{paddingHorizontal: width_numbers[5]}}
-            /> */}
-            <View style={{padding:5, borderRadius:3,marginHorizontal: 2, backgroundColor: 'orange'}} />
+              style={{paddingRight: width_numbers[3]}}
+
+            />
             <Text
               style={{
                 color: '#ffffff',
                 fontSize: width_numbers[10],
               }}>
               {numDownloads > 999
-                ? `${(numDownloads / 1000).toFixed(1)} K`
+                ? numDownloads > 999999 
+                  ? `${(numDownloads/1000000).toFixed(1)}M`
+                :`${(numDownloads / 1000).toFixed(1)} K`
                 : numDownloads}
             </Text>
           </View>
         </View>
       </View>
       <View style={cardIcons}>
-        <TouchableOpacity style={iconContainer}>
-          {/* <TouchableOpacity style={downloadButton} > */}
-          {/* <AntDesign
+          <AntDesign
             name="checkcircle"
             size={width_numbers[20]}
-            color={}
-          /> */}
-
-          {/* </TouchableOpacity> */}
-        </TouchableOpacity>
+            color={'#5488d3'}
+          />
       </View>
     </TouchableOpacity>
   );

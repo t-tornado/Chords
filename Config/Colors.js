@@ -28,3 +28,21 @@ export const song_card_colors = {
     download_icon: '#ffffff',
     already_downloaded_check_icon: '#ffffff60'
 }
+export const to_delete_song_screen_colors = {
+    option_text: '#ffffff',
+    cancel_text: '#ffffff',
+    cancel_icon: '#ffffff80',
+    delete_icon: 'red',
+    background: '#353535',
+    option_background: '#00000060',
+    title: '#ffffff',
+    choir: '#ffffff80',
+    composer: '#5488d1',
+    like_icon: '#5488d1',
+    cancel_icon: '#ffffff60'
+}
+export const card_colors = {
+    title: '#ffffff',
+    composer: '#5488d1',
+    choir: '#ffffff80'
+}

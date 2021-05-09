@@ -8,6 +8,7 @@ import {
   Dimensions,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Foundation from 'react-native-vector-icons/Foundation'
 // import {
 //   useSkipOnline,
 //   usePlayerLoadedState,
@@ -67,7 +68,7 @@ const WithDownloadButton = ({
   const [start, setStart] = React.useState(false);
   const [downloadProgress, setProgress] = React.useState(0);
 
-const openMax = useSetStoreOpenMax();   
+// const openMax = useSetStoreOpenMax();   
 
 const _downloadFunction = () => {
   downloadRequest();
@@ -212,44 +213,51 @@ const _downloadFunction = () => {
         <View style={cardDetailsIcons}>
           <View
             style={{
-              width: width * 0.15,
+              paddingRight: width_numbers[5],
+              paddingVertical: width_numbers[2],
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            {/* <Foundation
+            <Foundation
               name="heart"
-              color={Colors.download_card_icons}
+              color={'red'}
               size={width_numbers[13]}
-              style={{paddingHorizontal: width_numbers[5]}}
-            /> */}
-            <CustomIcon size={20} color='#5488d3' />
+              style={{paddingRight: width_numbers[3]}}
+            />
             <Text
               style={{
                 color: '#ffffff90',
                 fontSize: width_numbers[10],
               }}>
-              {likes > 999 ? `${(likes / 1000).toFixed(1)} K` : likes}
+              {likes > 999 ? 
+                likes > 999999 ?
+                  `${(likes/1000000).toFixed(1)}M` :
+                    `${(likes / 1000).toFixed(1)} K` :
+                       likes}
             </Text>
           </View>
           <View
             style={{
-              width: width * 0.1,
+              paddingHorizontal: width_numbers[5],
+              paddingVertical: width_numbers[2],
               flexDirection: 'row',
               alignItems: 'center',
             }}>
-            {/* <AntDesign
+            <AntDesign
               name="download"
-              color={Colors.download_card_icons}
+              color={'red'}
               size={width_numbers[13]}
-              style={{paddingHorizontal: width_numbers[5]}}
-            /> */}
+              style={{paddingRight: width_numbers[3]}}
+            />
             <Text
               style={{
                 color: '#ffffff90',
                 fontSize: width_numbers[10],
               }}>
               {numDownloads > 999
-                ? `${(numDownloads / 1000).toFixed(1)} K`
+                ? numDownloads > 999999 
+                  ? `${(numDownloads/1000000).toFixed(1)}M`
+                : `${(numDownloads / 1000).toFixed(1)} K`
                 : numDownloads}
             </Text>
           </View>
@@ -261,15 +269,10 @@ const _downloadFunction = () => {
             style={iconContainer}
             onPress={downloadFunction}
             activeOpacity={0.75}>
-            {/* <AntDesign
+            <AntDesign
               name="arrowdown"
               size={width_numbers[17]}
-              color={Colors.active_top_tab}
-            /> */}
-            <CustomIcon
-              color="#111d5e"
-              size={20}
-              // {...{downloadProgress}}
+              color={'#5488d3'}
             />
           </TouchableOpacity>
         ) : (

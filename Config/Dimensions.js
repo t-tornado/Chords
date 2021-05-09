@@ -3,9 +3,12 @@ const {height, width} = Dimensions.get('window')
 
 export const HOME_BOTTOM_TABBAR_HEIGHT = height * 0.08
 export const width_numbers = {
+    2: width * (2/width),
+    3: width * (3/width),
     4: width * (4/width),
     25: width * (25/width), 
     13: width * (13/width), 
+    14: width * (14/width), 
     5: width * (5/width),
     95: width * (95/width),
     7: width * (7/width),

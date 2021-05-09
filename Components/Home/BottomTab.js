@@ -4,7 +4,11 @@ import {createBottomTabNavigator} from 'react-navigation-tabs'
 //Screens for bottom tab
 import MainBrowseComponent from '../../Components/Browse/MainBrowseComponent';
 import SearchScreen from '../../Screens/HomeButtonTabs/SearchScreen';
-import MyCollectionScreen from '../../Screens/HomeButtonTabs/MyCollectionScreen';
+import MyCollectionComponent from '../MyCollection/MyCollectionComponent'
+//icons
+import Entypo from 'react-native-vector-icons/Entypo'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import Feather from 'react-native-vector-icons/Feather'
 
 import {HOME_BOTTOM_TABBAR_HEIGHT, width_numbers, } from '../../Config/Dimensions'
 import { home_tab_colors } from '../../Config/Colors';
@@ -16,55 +20,55 @@ const BottomTabs = createBottomTabNavigator(
       screen: MainBrowseComponent,
       navigationOptions: {
         tabBarIcon: ({focused}) => {
-          // return (             
-        //     <Feather
-        //       name="music"
-        //       size={width_numbers[25]}
-        //       color={
-        //         focused
-        //           ? home_tab_icons.active
-        //           : home_tab_icons.non_active
-        //       }
-        //     />
-          // );
+          return (             
+            <Feather
+              name="music"
+              size={width_numbers[20]}
+              color={
+                focused
+                  ? home_tab_colors.active_icon
+                  : home_tab_colors.non_active_icon
+              }
+            />
+          );
         },
       },
     },
     search: {
       screen: SearchScreen,
       navigationOptions: {
-        // tabBarIcon: ({focused}) => {
-        //   return (
-        //     <Ionicons
-        //       name="ios-search"
-        //       size={width_numbers[25]}
-        //       color={
-        //         focused
-        //           ? home_tab.active_icon
-        //           : home_tab.non_active_icon
-        //       }
-        //     />
-        //   );
-        // },
+        tabBarIcon: ({focused}) => {
+          return (
+            <Ionicons
+              name="ios-search"
+              size={width_numbers[20]}
+              color={
+                focused
+                  ? home_tab_colors.active_icon
+                  : home_tab_colors.non_active_icon
+              }
+            />
+          );
+        },
       },
     },
     list: {
-      screen: MyCollectionScreen,
+      screen: MyCollectionComponent,
       navigationOptions: {
         title: 'my collection',
-        // tabBarIcon: ({focused}) => {
-        //   return (
-        //     <Entypo
-        //       name="folder-music"
-        //       size={width_numbers[25]}
-        //       color={
-        //         focused
-        //           ? home_tab_icons.active
-        //           : home_tab_icons.non_active
-        //       }
-        //     />
-        //   );
-        // },
+        tabBarIcon: ({focused}) => {
+          return (
+            <Entypo
+              name="folder-music"
+              size={width_numbers[20]}
+              color={
+                focused
+                  ? home_tab_colors.active_icon
+                  : home_tab_colors.non_active_icon
+              }
+            />
+          );
+        },
       },
     },
   },

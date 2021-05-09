@@ -5,12 +5,15 @@ import AlreadyDownloaded from "../Cards/AlreadyDownloaded";
 import {songs} from '../../assets/audio_store'
 
 const RenderList = ({ item }) => {
-  const [songDownloaded, setSongDownloaded] = React.useState();
+  const [songDownloaded, setSongDownloaded] = React.useState(false);
   const downloadedSongs = songs
 
   React.useEffect(() => {
-    downloadedSongs.forEach((song) => song.downloaded && setSongDownloaded(true));
-  },[]);
+    let cleanUp = true
+    if(cleanUp){downloadedSongs.forEach(song => (item.title == song.title )&& setSongDownloaded(song.downloaded))
+    }
+    return () => cleanUp = false
+  },[songDownloaded]);
 
   return (
     <>
@@ -19,7 +22,7 @@ const RenderList = ({ item }) => {
           key={item.id}
           title={item.title}
           artist={item.artist}
-          composer={item.description}
+          composer={item.composer} //item.composer must be set to description from firestore
           numDownloads={item.downloads}
           id={item.id}
           artwork={item.artwork}
@@ -30,7 +33,7 @@ const RenderList = ({ item }) => {
           artist={item.artist}
           title={item.title}
           id={item.id}
-          composer={item.description}
+          composer={item.composer}
           genre={item.genre}
           duration={item.duration}
           key={item.id}

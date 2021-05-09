@@ -8,8 +8,8 @@ export const songs = [
     duration: 233,
     genre: 'anthem',
     composer: 'Kenn Kafui',
-    likes: 205,
-    downloads: 652,
+    likes: 9908700,
+    downloads: 6528568,
     downloaded: true
   },
   {
@@ -21,8 +21,8 @@ export const songs = [
     duration: '',
     genre: 'anthem',
     composer: 'Doc. Adusei',
-    likes: 122,
-    downloads: 112,
+    likes: 1288456,
+    downloads: 8456237,
     downloaded: false
   },
   {

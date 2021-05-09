@@ -7,12 +7,11 @@ import {
   FlatList,
   StatusBar,
 } from 'react-native';
-// import { AntDesign } from "react-native-vector-icons";
+import AntDesign from "react-native-vector-icons/AntDesign";
 import Footer from '../../Components/GeneralComponents/ListFooter';
 import RenderSong from '../../Components/GeneralComponents/RenderSongs';
 import { browse_top_scrollbar_colors, home_tab_colors } from '../../Config/Colors';
 import { width_numbers } from '../../Config/Dimensions';
-import {CustomIcon} from '../../Components/GeneralComponents/CustomIcon'
 import {songs} from '../../assets/audio_store'
 
 const {height, width} = Dimensions.get('window');
@@ -39,15 +38,12 @@ const SearchScreen = ({searchedSongs, searchKeyword}) => {
             justifyContent: 'space-around',
           },
         ]}>
-        {/* <AntDesign
+        <AntDesign
           name="search1"
-          color={Colors.active_top_tab_text}
-          size={15}
+          color={'#ffffff'}
+          size={width_numbers[17]}
           style={{ alignSelf: "center" }}
-        /> */}
-      <View style={{justifyContent: 'center', alignItems:'center', flex:1}} >
-      <CustomIcon color='#ffffff' size={20} />
-      </View>
+        />
         <TextInput
           placeholder="Search Song By Title"
           placeholderTextColor={browse_top_scrollbar_colors.active_tab}
