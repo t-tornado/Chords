@@ -20,12 +20,7 @@ const PADDING_TOP = StatusBar.currentHeight
 
 const MyCollectionScreen = () => {
   let { container } = styles;
-//   const songs = useDownloadedSongs();
-
-//   React.useEffect(() => {
-//     initialLoad();
-//   }, []);
-
+  
   return (
     <View style={container}>
       <MyCollectionHeader />
@@ -36,7 +31,7 @@ const MyCollectionScreen = () => {
           data={songs}
           renderItem={({ item, index }) => (
             <MyCollectionCard
-              key={item.id}
+              key={item.id} 
               id={item.id}
               title={item.title}
               composer={item.composer}

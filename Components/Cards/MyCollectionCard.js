@@ -9,17 +9,9 @@ import {
 } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import AntDesign from 'react-native-vector-icons/AntDesign'
-// import {
-//   useOpenDelete,
-//   usePlayerLoadedState,
-//   useSetStoreOpenMax,
-//   useSkipOffline,
-//   useOpenDeleteState,
-//   useDownloadsLoadedState,
-// } from "../../Context/TarckContext";
+import {useToggleCardOptions} from '../../Context/openCardoptions'
 import { width_numbers } from "../../Config/Dimensions";
 import { song_card_colors } from "../../Config/Colors";
-import { CustomIcon } from "../GeneralComponents/CustomIcon";
 
 const { height, width } = Dimensions.get("window");
 const CARD_IMAGE_H = height * 0.075;
@@ -41,6 +33,7 @@ export default function CardWithoutDownloadButton({
   // const openDelete = useOpenDelete();
   // const skipOffline = useSkipOffline();
   // const openStoreMax = useSetStoreOpenMax();
+  const toggleCardOption = useToggleCardOptions()
 
   React.useEffect(() => {
     let cleanUp = true;
@@ -55,8 +48,8 @@ export default function CardWithoutDownloadButton({
     // skipOffline(id, playerLoadedState, downloadsLoadedState, false);
   };
 
-  const openDeleteFunc = () => {
-    // openDelete(title, id, artist, genre, duration, composer, artWork);
+  const openCardOptions = () => {
+    toggleCardOption.open()
   };
 
   return (
@@ -112,7 +105,7 @@ export default function CardWithoutDownloadButton({
             alignItems: "center",
           }}
           activeOpacity={0.65}
-          onPress={openDeleteFunc}
+          onPress={openCardOptions}
         >
           <Entypo name="dots-three-vertical" size={20} color="#ffffff" />
         </TouchableOpacity>

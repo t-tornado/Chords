@@ -9,11 +9,13 @@ import {
   Image,
 } from "react-native";
 import {width_numbers} from '../../Config/Dimensions'
+import {useToggleCardOptions} from '../../Context/openCardoptions'
 
 // icons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+
 import { to_delete_song_screen_colors } from "../../Config/Colors";
 
 
@@ -32,7 +34,7 @@ const OPTION_HEADER_IMAGE_H = MODAL_HEIGHT * 0.185;
 const OPTION_HEADER_IMAGE_w = MODAL_HEIGHT * 0.185;
 
 const CardMenuScreen = () => {
-    
+const toggleCardOptions = useToggleCardOptions()
 //   const [modal, setModal] = React.useState(false);
   const [title, setTitle] = React.useState('Yensi Den');
   const [choir, setChoir] = React.useState('University Choir KNUST');
@@ -60,10 +62,10 @@ const CardMenuScreen = () => {
 //     return () => (clean = false);
 //   }, [openDeleteState]);
 
-  const closeModal = () => {
-    // setModal(false);
-    // closeDeleteAction();
-  };
+
+function closeCardOptions() {
+  toggleCardOptions.close()
+}
 
   const deleteAction = () => {
     // setModal(false);
@@ -130,7 +132,7 @@ const CardMenuScreen = () => {
         <View style={styles.body}>
           <TouchableOpacity
             style={styles.option_bar}
-            activeOpacity={0.85}
+            activeOpacity={0.95}
             onPress={likeAction}
           >
             <AntDesign
@@ -143,7 +145,7 @@ const CardMenuScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.option_bar}
-            activeOpacity={0.85}
+            activeOpacity={0.95}
             onPress={deleteAction}
           >
             <MaterialIcons
@@ -156,8 +158,8 @@ const CardMenuScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.option_bar}
-            activeOpacity={0.85}
-            onPress={closeModal}
+            activeOpacity={0.9}
+            onPress={closeCardOptions}
           >
             <MaterialCommunityIcons
               name="cancel"

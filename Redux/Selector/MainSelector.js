@@ -280,17 +280,17 @@ export const getDownloadingSongState = createSelector(
   (state) => state
 );
 
-/// DELETE SELECTORS AND RESELECT FUNCTIONS
-const openDeleteSelector = (state) => state.openDelete;
+/// DOWNLOADED CARD OPTIONS SELECTORS AND RESELECT FUNCTIONS
+const openCardOptionsSelector = (state) => state.openCardOptions;
 const songDeletedSelector = (state) => state.songDeleted;
 const fileToDeleteSelector = (state) => state.fileToDelete;
 export const getSongDeleted = createSelector(
   songDeletedSelector,
   (delState) => delState
 );
-export const getOpenDeleteState = createSelector(
-  openDeleteSelector,
-  (openDel) => openDel
+export const getOpenCardOptionsState = createSelector(
+  openCardOptionsSelector,
+  (openOptionsState) => openOptionsState
 );
 export const getFileToDelete = createSelector(
   fileToDeleteSelector,

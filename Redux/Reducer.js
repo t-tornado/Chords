@@ -61,7 +61,7 @@ let playerState = {
   downloads: [],
   downloadProgress: 0,
   /// Deleting Song State
-  openDelete: false,
+  openCardOptions: false,
   deleteSong: false,
   songDeleted: false,
   fileToDelete: {
@@ -350,7 +350,7 @@ export const playerReducer = (state = playerState, action) => {
   } else if (action.type == actionType.OPEN_DELETE) {
     return {
       ...state,
-      openDelete: true,
+      openCardOptions: true,
       fileToDelete: {
         ...state.fileToDelete,
         id: action.payload.id,
@@ -366,7 +366,7 @@ export const playerReducer = (state = playerState, action) => {
   } else if (action.type == actionType.CLOSE_DELETE) {
     return {
       ...state,
-      openDelete: false,
+      openCardOptions: false,
     };
   } else if (action.type == actionType.SET_ARTWORK) {
     return {

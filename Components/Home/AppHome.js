@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { app_backgroung_color } from "../../Config/Colors";
 import {BottomTabContainer} from './BottomTab'
-
+import MainAppContext from '../../Context/MainAppContext'
 
 
 const AppHome = () => {
@@ -17,9 +17,11 @@ const AppHome = () => {
   }, []);
 
   return (
+    <MainAppContext>
     <View style={container}>
       <BottomTabContainer />
     </View>
+    </MainAppContext>
   );
 };
 
