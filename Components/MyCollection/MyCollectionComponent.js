@@ -4,7 +4,6 @@ import CardMenu from './CardMenu'
 import MyCollectionScreen from '../../Screens/HomeButtonTabs/MyCollectionScreen'
 import {useCardOptionState} from '../../Context/openCardoptions'
 import {OpenCardOptionsContext} from '../../Context/'
-import Card from '../Cards/AlreadyDownloaded'
 
 const {height, width} = Dimensions.get('window')
 const {Value} = Animated
@@ -23,27 +22,24 @@ const STANDARD_CONFIG = {
 }
 
 const MyCollectionComponent = () => {
+    // import {
+    //   useCloseDelete,
+    //   useFileToDelete,
+    //   useOpenDeleteState,
+    //   useLikeSong,
+    //   useDeleteSong,
+    // } from "../Context/TarckContext";_BOTTOM)).current
+const scale = React.useRef(new Value(1)).current
 const cardOptionState = useCardOptionState()
 
-const menu_translateY = React.useRef(new Value(SNAP_BOTTOM)).current
-const scale = React.useRef(new Value(1)).current
 const opacity = React.useRef(new Value(1)).current
 
+const menu_translateY = React.useRef(new Value(SNAP_BOTTOM)).current
 const open_menu_translation = Animated.spring(menu_translateY, {toValue: SNAP_TOP, ...SNAP_ANIMATION_CONFIG})
-const open_menu_scale = Animated.spring(scale, {toValue: 0.97, ...STANDARD_CONFIG})
-const open_menu_opacity = Animated.spring(opacity, {toValue: 0.12, ...STANDARD_CONFIG})
 const close_menu_translation = Animated.spring(menu_translateY,{...SNAP_ANIMATION_CONFIG, toValue:SNAP_BOTTOM})
-const close_menu_scale = Animated.spring(scale, {toValue: 1, ...STANDARD_CONFIG})
-const close_menu_opacity = Animated.spring(opacity, {...STANDARD_CONFIG, toValue: 1})
 
-
-const _openMenuAnimations = () => Animated.parallel([open_menu_scale,open_menu_translation,open_menu_opacity]).start()
-const _closeMenuAnimations = () => Animated.parallel([close_menu_scale, close_menu_translation,close_menu_opacity]).start()
-
-console.log(cardOptionState)
-
-cardOptionState && _openMenuAnimations()
-!cardOptionState && _closeMenuAnimations()
+!cardOptionState && close_menu_translation.start()
+cardOptionState && open_menu_translation.start()
 // React.useState(()=> {
 //     let clean = true
 //     if(clean && cardOptionState) _openMenuAnimations()
@@ -54,30 +50,21 @@ cardOptionState && _openMenuAnimations()
 
 return(
         <View style={styles.container}>
-            <Animated.View style={[styles.mainScreen, {opacity, transform:[{scale}]}]} >
-                <MyCollectionScreen />
-            </Animated.View>
-
-            <Animated.View style={{
-                transform: [{translateY: menu_translateY}]
-            }} >
-                <CardMenu />
-            </Animated.View>
-            
+                    <MyCollectionScreen />
+                    <CardMenu />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex:1, 
         alignItems:'center',
-        paddingBottom: 20
+        paddingBottom: 20, 
+        flex:1,
     }, 
     mainScreen: {
-        position: 'absolute', 
-        flex:1, 
-
+        // position: 'absolute', 
+        flex: 1
     },
 })
 

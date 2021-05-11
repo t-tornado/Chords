@@ -9,7 +9,7 @@ import {
   Image,
 } from "react-native";
 import {width_numbers} from '../../Config/Dimensions'
-import {useToggleCardOptions} from '../../Context/openCardoptions'
+import {useCardOptionState, useToggleCardOptions} from '../../Context/openCardoptions'
 
 // icons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -19,23 +19,18 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import { to_delete_song_screen_colors } from "../../Config/Colors";
 
 
-// import {
-//   useCloseDelete,
-//   useFileToDelete,
-//   useOpenDeleteState,
-//   useLikeSong,
-//   useDeleteSong,
-// } from "../Context/TarckContext";
-
 const { height, width } = Dimensions.get("window");
 const MODAL_HEIGHT = height * 0.45;
 const MODAL_WIDTH = width * 0.95;
 const OPTION_HEADER_IMAGE_H = MODAL_HEIGHT * 0.185;
 const OPTION_HEADER_IMAGE_w = MODAL_HEIGHT * 0.185;
 
+
 const CardMenuScreen = () => {
 const toggleCardOptions = useToggleCardOptions()
-//   const [modal, setModal] = React.useState(false);
+const cardOptionState = useCardOptionState()
+
+  const [modal, setModal] = React.useState(false);
   const [title, setTitle] = React.useState('Yensi Den');
   const [choir, setChoir] = React.useState('University Choir KNUST');
 //   const [artwork, setArtwork] = React.useState();
@@ -47,10 +42,10 @@ const toggleCardOptions = useToggleCardOptions()
 //   const fileToDelete = useFileToDelete();
 //   const likeSong = useLikeSong();
 
-//   React.useEffect(() => {
-//     let clean = true;
-//     if (clean && openDeleteState) {
-//       setModal(true);
+  React.useEffect(() => {
+    let clean = true;
+    if (clean && cardOptionState) {
+      setModal(true);
 //       setTitle(fileToDelete.title == null ? "Title" : fileToDelete.title);
 //       setChoir(fileToDelete.artist == null ? "Choir" : fileToDelete.artist);
 //       setComposer(
@@ -58,12 +53,13 @@ const toggleCardOptions = useToggleCardOptions()
 //       );
 //       setId(fileToDelete.id);
 //       setArtwork(fileToDelete.artwork);
-//     }
-//     return () => (clean = false);
-//   }, [openDeleteState]);
+    }
+    return () => (clean = false);
+  }, [cardOptionState]);
 
 
 function closeCardOptions() {
+  setModal(false)
   toggleCardOptions.close()
 }
 
@@ -86,19 +82,15 @@ function closeCardOptions() {
     //   transparent={true}
     //   animationType="slide"
     // >
-    <>
-      <View style={styles.cover}>
+   
+
+      <Modal style={styles.container} transparent={true} visible={modal} animationType='slide'  >
+        <View style={styles.cover} >
         <View style={styles.header}>
           <View style={styles.header_image}>
-            {/* <Image
-              source={
-                artwork == null
-                  ? require("../assets/alternate_image.jpg")
-                  : { uri: artwork }
-              }
+            <Image source={ require("../../assets/images/default.jpg")}
               style={styles.header_image}
-            /> */}
-            <View style={styles.header_image} />
+            />
           </View>
           <View style={styles.header_details}>
             <Text
@@ -170,9 +162,10 @@ function closeCardOptions() {
             <Text style={styles.option_text}>CANCEL</Text>
           </TouchableOpacity>
         </View>
-        <View></View>
-      </View>
-    {/* </Modal> */}</>
+        </View>
+        {/* <View></View> */}
+      </Modal>
+
   );
 };
 

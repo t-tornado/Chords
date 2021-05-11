@@ -18,7 +18,7 @@ const AppHome = () => {
 
   return (
     <MainAppContext>
-    <View style={container}>
+    <View style={container}> 
       <BottomTabContainer />
     </View>
     </MainAppContext>

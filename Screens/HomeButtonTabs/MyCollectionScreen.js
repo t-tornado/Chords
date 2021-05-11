@@ -6,8 +6,6 @@ import {
   StatusBar,
   Dimensions,
 } from "react-native";
-// import { useDownloadedSongs } from "../Context/TarckContext";
-// import { initialLoad } from "../Redux/actions/DownloadAction";
 
 import MyCollectionCard from "../../Components/Cards/MyCollectionCard";
 import Footer from "../../Components/GeneralComponents/ListFooter";
@@ -17,14 +15,14 @@ import {width_numbers} from '../../Config/Dimensions'
 import {songs} from '../../assets/audio_store'
 
 const PADDING_TOP = StatusBar.currentHeight
+const {height,width} = Dimensions.get('window')
 
 const MyCollectionScreen = () => {
-  let { container } = styles;
+  let { container,body } = styles;
   
   return (
-    <View style={container}>
+    <View style={body}>
       <MyCollectionHeader />
-      <View>
         <FlatList
           ListEmptyComponent={MyCollectionEmpty}
           ListFooterComponent={() => <Footer />}
@@ -32,7 +30,7 @@ const MyCollectionScreen = () => {
           renderItem={({ item, index }) => (
             <MyCollectionCard
               key={item.id} 
-              id={item.id}
+              id={index}
               title={item.title}
               composer={item.composer}
               artist={item.artist}
@@ -41,18 +39,23 @@ const MyCollectionScreen = () => {
               duration={item.duration}
             />
           )}
-        />
-      </View>
+        />     
       <StatusBar barStyle="light-content" translucent={true} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  body:{
     justifyContent: "flex-start",
-    paddingTop: PADDING_TOP
+    paddingTop: PADDING_TOP, 
+    flex:1
+    
+  },
+  container: {
+    padding: 1,
+    flex: 1, 
+
   },
 });
 

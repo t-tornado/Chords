@@ -46,6 +46,7 @@ export default function CardWithoutDownloadButton({
   const toPlay = async () => {
     // openStoreMax();
     // skipOffline(id, playerLoadedState, downloadsLoadedState, false);
+    console.log('From my collection card, Card pressed')
   };
 
   const openCardOptions = () => {
@@ -122,6 +123,9 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     borderBottomColor: "#353535",
     flexDirection: "row",
+    justifyContent: 'center',
+    alignItems: 'center', 
+    zIndex :1
   },
   cardCover: {
     flex: 2,

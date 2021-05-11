@@ -52,4 +52,31 @@ export const songs = [
     downloaded: true
 
   },
+  {
+    title: 'Gloria In Excelsis',
+    artist: 'University Choir KNUST',
+    artwork: '',
+    // url: require('./audio_files/YƐNSI DƐN NKAMFO WO.mp3'),
+    id: '05',
+    duration: 353,
+    genre: 'anthem',
+    composer: 'G.F. Handel',
+    likes: 400,
+    downloads: 811,
+    downloaded: true
+
+  },
+  {
+    title: 'Amazing Love',
+    artist: 'University Choir KNUST',
+    artwork: '',
+    // url: require('./audio_files/AMAZING GRACE.mp3'),
+    id: '06',
+    duration: 233,
+    genre: 'anthem',
+    composer: 'Mendelson',
+    likes: 9908700,
+    downloads: 6528568,
+    downloaded: true
+  }
 ];
