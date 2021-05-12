@@ -9,7 +9,7 @@ export function fetchAnthemsSuccess(data) {
 }
 export function fetchAnthemsFailure(error) {
   return {
-    type: actionType.FETCH_ANTHEMS_FAILUER,
+    type: actionType.FETCH_ANTHEMS_FAILURE,
     payload: error,
   };
 }

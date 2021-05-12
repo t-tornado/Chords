@@ -24,7 +24,7 @@ export function loadApp() {
   };
 }
 
-export function setKeyword(keyword) {
+export function setSearchKeyword(keyword) {
   return {
     type: actionType.SET_SEARCH_KEYWORD,
     payload: keyword,

@@ -25,28 +25,42 @@ export const CLOSE_QUEUE = "closePlayerQueue";
 export const UPDATE_QUEUE = "updateSongQueue";
 export const UPDATE_ONLINE_LIB = "updateOnlineLibrary";
 export const UPDATE_NAVBAR_STATE = "updateBottomNavBarState";
-///FETCHING GENRE
+
+/**
+ * 
+ * Fetching genre action types
+ * 
+ */
+
+//Hymns
 export const FETCH_HYMNS_REQUEST = "fetchHymnsRequest";
 export const FETCH_HYMNS_SUCCESS = "fetchHymnsSuccess";
 export const FETCH_HYMNS_FAILUER = "fetchHymnsfailure";
+//Highlifes
 export const FETCH_KELENCHA_REQUEST = "fetchKelenchaRequest";
 export const FETCH_KELENCHA_SUCCESS = "fetchKelenchaSuccess";
 export const FETCH_KELENCHA_FAILUER = "fetchKelenchafailure";
+//Anthems
 export const FETCH_ANTHEMS_REQUEST = "fetchAnthemsRequest";
 export const FETCH_ANTHEMS_SUCCESS = "fetchAnthemsSuccess";
-export const FETCH_ANTHEMS_FAILUER = "fetchAnthemsfailure";
+export const FETCH_ANTHEMS_FAILURE = "fetchAnthemsfailure";
+//Classicals
 export const FETCH_CLASSICALS_REQUEST = "fetchClassicalsRequest";
 export const FETCH_CLASSICALS_SUCCESS = "fetchClassicalsSuccess";
 export const FETCH_CLASSICALS_FAILUER = "fetchClassicalsfailure";
+//Christmas anthems
 export const FETCH_CHRISTMAS_ANTHEMS_REQUEST = "fetchChristmasAnthemsRequest";
 export const FETCH_CHRISTMAS_ANTHEMS_SUCCESS = "fetchChristmasAnthemsSuccess";
 export const FETCH_CHRISTMAS_ANTHEMS_FAILURE = "fetchChristmasAnthemsFailure";
+//Easter anthems
 export const FETCH_EASTER_ANTHEMS_REQUEST = "fetchEasterAnthemsRequest";
 export const FETCH_EASTER_ANTHEMS_SUCCESS = "fetchEasterAnthemsSuccess";
 export const FETCH_EASTER_ANTHEMS_FAILURE = "fetchEasterAnthemsFailure";
+//choral blues(slow rock)
 export const FETCH_CHORAL_BLUES_REQUEST = "fetchChoralBluesRequest";
 export const FETCH_CHORAL_BLUES_SUCCESS = "fetchChoralBluesSuccess";
 export const FETCH_CHORAL_BLUES_FAILURE = "fetchChoralBluesFailure";
+
 export const SET_SEARCH_KEYWORD = "setSearchKeyword";
 ///DOWNLOAD ACTIONS
 export const DOWNLOAD_SONG_REQUEST = "downloadSongRequest";

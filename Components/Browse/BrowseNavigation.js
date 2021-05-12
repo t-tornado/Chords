@@ -3,55 +3,55 @@ import {createMaterialTopTabNavigator} from 'react-navigation-tabs'
 import {createAppContainer} from 'react-navigation'
 import TopTabBarComponent from './TopTabBarComponent'
 //Screens
-import {DummyAnthesScreen} from '../../Screens/GenreScreens/AnthemsScreen'
-import {DumyChristmasAnthemScreen} from '../../Screens/GenreScreens/ChristmasAnthemsScreen'
-import {DumyEasterAnthemsScreen} from '../../Screens/GenreScreens/EasterAnthemsScreen'
-import {DumyClassicalsScreen} from '../../Screens/GenreScreens/ClassicalsScreen'
-import {DumyHighlifesScreen} from '../../Screens/GenreScreens/HighlifesScreen'
-import {DummyHymnsScreen} from '../../Screens/GenreScreens/HymnsScreen'
-import {DummyChoralBluesScreen} from  '../../Screens/GenreScreens/ChoralBluesScreen'
+import AnthemsScreen from '../../Screens/GenreScreens/AnthemsScreen'
+import ChristmasAnthemsScreen from '../../Screens/GenreScreens/ChristmasAnthemsScreen'
+import EasterAnthemsScreen from '../../Screens/GenreScreens/EasterAnthemsScreen'
+import ClassicalsScreen from '../../Screens/GenreScreens/ClassicalsScreen'
+import HighlifesScreen from '../../Screens/GenreScreens/HighlifesScreen'
+import HymnsScreen from '../../Screens/GenreScreens/HymnsScreen'
+import ChoralBluesScreen from  '../../Screens/GenreScreens/ChoralBluesScreen'
 
 const BrowseNavigationComponent = createMaterialTopTabNavigator(
-    {
+    { 
       anthems: {
-        screen: DummyAnthesScreen,
+        screen: AnthemsScreen,
         params: {
           title: "Anthems",
         },
       },
       christmasAnthems: {
-        screen: DumyChristmasAnthemScreen,
+        screen: ChristmasAnthemsScreen,
         params: {
           title: "Christmas Anthems",
         },
       },
   
       easterAnthems: {
-        screen: DumyEasterAnthemsScreen,
+        screen: EasterAnthemsScreen,
         params: {
           title: "Easter Anthems",
         },
       },
       classical: {
-        screen: DumyClassicalsScreen,
+        screen: ClassicalsScreen,
         params: {
           title: "Classical Music",
         },
       },
       kelencha: {
-        screen: DumyHighlifesScreen,
+        screen: HighlifesScreen,
         params: {
           title: "Choral Hilifes",
         },
       },
       choraBlues: {
-        screen: DummyChoralBluesScreen,
+        screen: ChoralBluesScreen,
         params: {
           title: "Slow Rock",
         },
       },
       hymns: {
-        screen: DummyHymnsScreen,
+        screen: HymnsScreen,
         params: {
           title: "Hymns",
         },

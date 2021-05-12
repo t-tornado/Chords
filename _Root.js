@@ -1,7 +1,8 @@
 import React from "react";
 import { StatusBar, StyleSheet  } from "react-native";
 import AppHome from './Components/Home/AppHome'
-
+import {Provider} from 'react-redux'
+import {appStore} from './Redux/Store'
 
 // To prevenet yellow timer error logs...
 import { Platform, InteractionManager } from 'react-native';
@@ -50,13 +51,13 @@ if (Platform.OS === 'android') {
 
 
   return (
-      <>
+      <Provider store={appStore}>
         <AppHome />
         <StatusBar 
         backgroundColor='transparent'
         barStyle='light-content'
         />
-    </>
+    </Provider>
   );
 }
 
