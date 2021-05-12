@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { app_backgroung_color } from "../../Config/Colors";
 import {BottomTabContainer} from './BottomTab'
 import MainAppContext from '../../Context/MainAppContext'
+import MainPlayer from "../Player/MainPlayer";
 
 
 const AppHome = () => {
@@ -20,6 +21,7 @@ const AppHome = () => {
     <MainAppContext>
     <View style={container}> 
       <BottomTabContainer />
+      {/* <MainPlayer /> */}
     </View>
     </MainAppContext>
   );
@@ -28,7 +30,7 @@ const AppHome = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: app_backgroung_color
+    backgroundColor: app_backgroung_color, 
   },
 });
 

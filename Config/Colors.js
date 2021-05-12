@@ -5,6 +5,10 @@ export const home_tab_colors = {
     non_active_text: '#ffffff80',
     bottom_navbar: '#ffffff10'
 }
+export const player_colors = {
+    mini_player_background:'#ffffff10'
+}
+
 export const colors = {
     home_bottom_tabbar: '#ffffff10'
 } 
