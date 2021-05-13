@@ -6,19 +6,19 @@ import { getErrorLoadingHymns, getHymns, getLoadingHymns } from '../../Redux/Sel
 import ListFooter from '../../Components/GeneralComponents/ListFooter'
 import RenderSongs from '../../Components/GeneralComponents/RenderSongs'
 import SongLoadingFailureScreen from '../ErrorScreens/SongLoadingFailureScreen'
-import {songs} from '../../assets/audio_store'
 
 import { width_numbers } from "../../Config/Dimensions";
+import { fetchHymns } from "../../Redux/Actions/HymnActions";
 
 const HymnsScreen = ({
-  hymns, loadinghymns, errorLoadinghymns
+  hymns, loadinghymns, fetchHymnsFromStore
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchAnthemsFromStore();
+      // fetchHymnsFromStore();
     }
 
     return () => (cleanUp = false);
@@ -30,11 +30,11 @@ const HymnsScreen = ({
     <View style={container}>
       <View style={listBody}>
         <FlatList
-          data={songs}
+          data={hymns}
           ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
           refreshControl={
             <RefreshControl
-              // refreshing={loadingAnthems}
+              refreshing={loadinghymns}
               onRefresh={onFetchSongs}
             />
           }
@@ -65,4 +65,10 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(HymnsScreen)
+const mapDispatch = dispatch => {
+  return {
+    fetchHymnsFromStore: () => dispatch(fetchHymns())
+  }
+}
+
+export default connect(mapState, mapDispatch)(HymnsScreen)

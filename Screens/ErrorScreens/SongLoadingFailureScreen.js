@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
+import {connect} from 'react-redux'
 import { width_numbers } from "../../Config/Dimensions";
 import { error_screen_colors } from "../../Config/Colors";
 import Feather from 'react-native-vector-icons/Feather'
@@ -30,29 +31,23 @@ const MODAL_MESSAGE_HEIGHT = height * 0.045;
 const MODAL_HEIGHT = height * 0.2;
 const MODAL_WIDTH = width; 
 
-const reloadAllSongs = () => {
-  fetchAnthems()
-  fetchChoralBlues()
-  fetchChristmasAnthems()
-  fetchClassicals()
-  fetchEasterAnthems()
-  fetchHymns()
-  fetchKelencha()
-}
 
-const SongLodingFailureScreen = () => {
+
+const SongLodingFailureScreen = ({
+  fetchStoreAnthems
+}) => {
   let { errorContainer, text, modal } = styles;
 
 
-  const onFetchAnthems = React.useCallback(() => {
-    // reloadAllSongs()
-    console.log('INFO FROM SONGS LOADING FAILURE SCREEN >>>> Error button tapped')
+  const reloadSongss = React.useCallback(() => {
+    fetchStoreAnthems()
+    // console.log('INFO FROM SONGS LOADING FAILURE SCREEN >>>> Error button tapped')
   });
   // if(loadingError) {
     return (
       <View style={modal}>
         <Text style={text}>Could not connect </Text>
-        <TouchableOpacity style={errorContainer} onPress={onFetchAnthems}>
+        <TouchableOpacity style={errorContainer} onPress={reloadSongss}>
           <Text style={text}>Try again</Text>
           <Feather name="wifi-off" size={width_numbers[13]} color="#ffffff90" />
         </TouchableOpacity>
@@ -86,4 +81,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SongLodingFailureScreen;
+const mapDispatch = dispatch => {
+  return{ 
+    fetchStoreAnthems: () => dispatch(fetchAnthems()), 
+    
+  }
+}
+
+export default connect(null, mapDispatch)(SongLodingFailureScreen);

@@ -9,16 +9,17 @@ import SongLoadingFailureScreen from '../ErrorScreens/SongLoadingFailureScreen'
 import {songs} from '../../assets/audio_store'
 
 import { width_numbers } from "../../Config/Dimensions";
+import { fetchChristmasAnthems } from "../../Redux/Actions/ChristmasAnthemsActions";
 
 const ChristmasAnthemsScreen = ({ 
-  christmasAnthems, loadingChristmasAnthems, errorLoadingchristmasAnthems
+  christmasAnthems, loadingChristmasAnthems, fetchChristmasAnthemsFromStore
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchAnthemsFromStore();
+      // fetchChristmasAnthemsFromStore()
     }
 
     return () => (cleanUp = false);
@@ -32,11 +33,11 @@ const ChristmasAnthemsScreen = ({
     <View style={container}>
       <View style={listBody}>
         <FlatList
-          data={songs}
+          data={christmasAnthems}
           ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
           refreshControl={
             <RefreshControl
-              // refreshing={loadingAnthems}
+              refreshing={loadingChristmasAnthems}
               onRefresh={onFetchSongs}
             />
           }
@@ -67,5 +68,10 @@ const mapState = state => {
   }
 }
 
+const mapDispatch = dispatch => {
+  return {
+    fetchChristmasAnthemsFromStore: () => dispatch(fetchChristmasAnthems())
+  }
+}
 
-export default connect(mapState)(ChristmasAnthemsScreen)
+export default connect(mapState, mapDispatch)(ChristmasAnthemsScreen)

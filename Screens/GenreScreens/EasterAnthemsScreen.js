@@ -9,16 +9,17 @@ import SongLoadingFailureScreen from '../ErrorScreens/SongLoadingFailureScreen'
 import {songs} from '../../assets/audio_store'
 
 import { width_numbers } from "../../Config/Dimensions";
+import { fetchEasterAnthems } from "../../Redux/Actions/EasterAnthemsActions";
 
 const EasterAnthemsScreen = ({
-  easterAnthems, loadingEasterAnthems, errorLoadingEasterAnthemsState
+  easterAnthems, loadingEasterAnthems, fetchEasterAnthemsFromStore
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchAnthemsFromStore();
+      // fetchEasterAnthemsFromStore();
     }
 
     return () => (cleanUp = false);
@@ -30,11 +31,11 @@ const EasterAnthemsScreen = ({
     <View style={container}>
       <View style={listBody}>
         <FlatList
-          data={songs}
+          data={easterAnthems}
           ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
           refreshControl={
             <RefreshControl
-              // refreshing={loadingAnthems}
+              refreshing={loadingEasterAnthems}
               onRefresh={onFetchSongs}
             />
           }
@@ -65,4 +66,10 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(EasterAnthemsScreen)
+const mapDispatch = dispatch => {
+  return {
+    fetchEasterAnthemsFromStore: () => dispatch(fetchEasterAnthems())
+  }
+}
+
+export default connect(mapState,mapDispatch)(EasterAnthemsScreen)

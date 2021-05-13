@@ -9,33 +9,34 @@ import {getChoralBlues, getErrorLoadingChoralBlues, getLoadingChoralBlues} from 
 import {songs} from '../../assets/audio_store'
 
 import { width_numbers } from "../../Config/Dimensions";
+import { fetchChoralBlues } from "../../Redux/Actions/ChoralBlues";
 
 const ChoralBleusScreen = ({
-  choralBlues, loadingChoralBlues, errorLoadingChoralBluesState
+  choralBlues, loadingChoralBlues, fetchChoralBluesFromStore
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchAnthemsFromStore();
+      // fetchChoralBluesFromStore()
     }
 
     return () => (cleanUp = false);
   }, []);
 
 
-  const onFetchSongs = React.useCallback(() => { });
+const onFetchSongs = React.useCallback(() => { });
 
   return (
     <View style={container}>
       <View style={listBody}>
         <FlatList
-          data={[]}
+          data={choralBlues}
           ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
           refreshControl={
             <RefreshControl
-              // refreshing={loadingAnthems}
+              refreshing={loadingChoralBlues}
               onRefresh={onFetchSongs}
             />
           }
@@ -66,4 +67,10 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(ChoralBleusScreen)
+const mapDispatch = dispatch => {
+  return {
+    fetchChoralBluesFromStore: () => dispatch(fetchChoralBlues())
+  }
+}
+
+export default connect(mapState, mapDispatch)(ChoralBleusScreen)

@@ -10,28 +10,29 @@ const empty =[]
 
 import { width_numbers } from "../../Config/Dimensions";
 import { getAnthems, getErrorLoadingAnthems, getLoadingAnthems } from "../../Redux/Selector/MainSelector";
+import { fetchAnthems } from "../../Redux/Actions/AnthemsActions";
 
 const AnthemsScreen = ({
   anthemsSongs, 
   errorLoadingAnthemsState, 
-  loadingAnthemsState
+  loadingAnthemsState, 
+  fetchAnthemsFromStore
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchAnthemsFromStore();
+      fetchAnthemsFromStore()      
     }
 
     return () => (cleanUp = false);
-  }, []);
+  }, [anthemsSongs]);
   
-// console.log('INFO FROM ANTHEMS SCREEN >>>>  anthems songs: ',anthemsSongs)
-// console.log('INFO FROM ANTHEMS SCREEN >>>>  errorLoadingAnthemsState: ',errorLoadingAnthemsState)
-// console.log('INFO FROM ANTHEMS SCREEN >>>>  loadingAnthemsState: ',loadingAnthemsState)
 
-  const onFetchSongs = React.useCallback(() => { });
+  
+const onFetchSongs = React.useCallback(() => { });
+
 
   return (
     <View style={container}>
@@ -41,7 +42,7 @@ const AnthemsScreen = ({
           ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
           refreshControl={
             <RefreshControl
-              // refreshing={loadingAnthems}
+              refreshing={loadingAnthemsState}
               onRefresh={onFetchSongs}
             />
           }
@@ -72,5 +73,11 @@ const mapState = state => {
   }
 }
 
+const mapDispatch = dispatch => {
+  return {
+    fetchAnthemsFromStore: () => dispatch(fetchAnthems())
+  }
+}
 
-export default connect(mapState)(AnthemsScreen)
+
+export default connect(mapState,mapDispatch)(AnthemsScreen)

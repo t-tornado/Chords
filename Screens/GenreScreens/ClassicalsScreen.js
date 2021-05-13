@@ -9,16 +9,17 @@ import SongLoadingFailureScreen from '../ErrorScreens/SongLoadingFailureScreen'
 import {songs} from '../../assets/audio_store'
 
 import { width_numbers } from "../../Config/Dimensions";
+import { fetchClassicals } from "../../Redux/Actions/ClassicalsActions";
 
 const ClassicalsScreen = ({
-  classicals, loadingClassicals, errorLoadingClassicalsState
+  classicals, loadingClassicals, fetchClassicalFromStore
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchAnthemsFromStore();
+      // fetchClassicalFromStore();
     }
 
     return () => (cleanUp = false);
@@ -33,11 +34,11 @@ const ClassicalsScreen = ({
     <View style={container}>
       <View style={listBody}>
         <FlatList
-          data={songs}
+          data={classicals}
           ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
           refreshControl={
             <RefreshControl
-              // refreshing={loadingAnthems}
+              refreshing={loadingClassicals}
               onRefresh={onFetchSongs}
             />
           }
@@ -68,4 +69,10 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(ClassicalsScreen)
+const mapDispatch = dispatch => {
+  return {
+    fetchClassicalFromStore: () => dispatch(fetchClassicals())
+  }
+}
+
+export default connect(mapState,mapDispatch)(ClassicalsScreen)

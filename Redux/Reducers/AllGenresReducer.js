@@ -8,7 +8,7 @@ export const anthemReducer = (state = playerState, action) => {
         loadingAnthems: true,
         loadingAnthemsError: false,
       };
-    } else if (action.type === actionType.FETCH_ANTHEMS_FAILUER) {
+    } else if (action.type === actionType.FETCH_ANTHEMS_FAILURE) {
       return {
         ...state,
         loadingAnthems: false,

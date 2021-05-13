@@ -7,10 +7,9 @@ export function fetchAnthemsSuccess(data) {
     payload: data,
   };
 }
-export function fetchAnthemsFailure(error) {
+export function fetchAnthemsFailure() {
   return {
     type: actionType.FETCH_ANTHEMS_FAILURE,
-    payload: error,
   };
 }
 
@@ -25,6 +24,7 @@ export function fetchAnthems() {
     dispatch(fetchAnthemsRequest());
     try {
       firebase.auth().onAuthStateChanged((user) => {
+        // console.log('INFO FROM ANTHEMS ACTIONS  >>>>: after dispatching fetching anthems request')
         if (user) {
           db.collection("anthems")
             .get()
@@ -41,6 +41,7 @@ export function fetchAnthems() {
             })
             .catch((error) => {
               dispatch(fetchAnthemsFailure());
+              // console.log('INFO FROM ANTHEMS ACTIONS  >>>>: dispatching fetching anthems error  ')
             });
         }
         if (!user) {

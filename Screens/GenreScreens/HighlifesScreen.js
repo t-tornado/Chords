@@ -11,14 +11,14 @@ import {songs} from '../../assets/audio_store'
 import { width_numbers } from "../../Config/Dimensions";
 
 const HighlifesScreen = ({
-  highlifes, loadingHighlifes, errorLoadingHighlifes
+  highlifes, loadingHighlifes, fetchHighlifesFromStore
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchAnthemsFromStore();
+      // fetchHighlifesFromStore();
     }
 
     return () => (cleanUp = false);
@@ -31,11 +31,11 @@ const HighlifesScreen = ({
     <View style={container}>
       <View style={listBody}>
         <FlatList
-          data={songs}
+          data={highlifes}
           ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
           refreshControl={
             <RefreshControl
-              // refreshing={loadingAnthems}
+              refreshing={loadingHighlifes}
               onRefresh={onFetchSongs}
             />
           }
@@ -66,4 +66,11 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(HighlifesScreen)
+const mapDispatch = dispatch => {
+  return {
+    fetchHighlifesFromStore: () => dispatch(fetchEasterAnthems())
+  }
+}
+
+
+export default connect(mapState, mapDispatch)(HighlifesScreen)
