@@ -20,7 +20,7 @@ export function fetchClassicalsRequest() {
   };
 }
 
-export function fetchclassicals() {
+export function fetchClassicals() {
   return async (dispatch) => {
     dispatch(fetchClassicalsRequest());
     try {

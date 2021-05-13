@@ -8,40 +8,45 @@ import {
 } from "react-native";
 import { width_numbers } from "../../Config/Dimensions";
 import { error_screen_colors } from "../../Config/Colors";
+import Feather from 'react-native-vector-icons/Feather'
+
+/**
+ * Reloading Songs actions from backend 
+ */
+import {fetchAnthems} from '../../Redux/Actions/AnthemsActions'
+import {fetchChoralBlues} from '../../Redux/Actions/ChoralBlues'
+import {fetchChristmasAnthems} from '../../Redux/Actions/ChristmasAnthemsActions'
+import {fetchClassicals} from '../../Redux/Actions/ClassicalsActions'
+import {fetchEasterAnthems} from '../../Redux/Actions/EasterAnthemsActions'
+import {fetchHymns} from '../../Redux/Actions/HymnActions'
+import {fetchKelencha} from '../../Redux/Actions/KelenchaActions'
+
+
+
 
 const { height, width } = Dimensions.get("window");
 const MODAL_MESSAGE_WIDTH = width * 0.35;
 const MODAL_MESSAGE_HEIGHT = height * 0.045;
 const MODAL_HEIGHT = height * 0.2;
-const MODAL_WIDTH = width;
+const MODAL_WIDTH = width; 
 
+const reloadAllSongs = () => {
+  fetchAnthems()
+  fetchChoralBlues()
+  fetchChristmasAnthems()
+  fetchClassicals()
+  fetchEasterAnthems()
+  fetchHymns()
+  fetchKelencha()
+}
 
-const SongLodingFailureScreen = ({
-  fetchAnthems,
-  loadingError,
-  fetchChristmasAnthems,
-  fetchHymns,
-  fetchKelencha,
-  fetchEasterAnthems,
-  fetchClassicals,
-  fetchChoralBlues,
-}) => {
+const SongLodingFailureScreen = () => {
   let { errorContainer, text, modal } = styles;
 
-/**
- * Passing all functions as argz is verbose. Create a generic function and pass only loading error
- * as argz to the error screen. Call method if loading error is true
- */
 
   const onFetchAnthems = React.useCallback(() => {
-    // fetchAnthems();
-    // fetchChristmasAnthems();
-    // fetchClassicals();
-    // fetchHymns();
-    // fetchKelencha();
-    // fetchEasterAnthems();
-    // fetchChoralBlues();
-    console.log('From ErrorScreen, Error button tapped')
+    // reloadAllSongs()
+    console.log('INFO FROM SONGS LOADING FAILURE SCREEN >>>> Error button tapped')
   });
   // if(loadingError) {
     return (
@@ -49,7 +54,7 @@ const SongLodingFailureScreen = ({
         <Text style={text}>Could not connect </Text>
         <TouchableOpacity style={errorContainer} onPress={onFetchAnthems}>
           <Text style={text}>Try again</Text>
-          {/* <Feather name="wifi-off" size={width_numbers[13]} color="#ffffff90" /> */}
+          <Feather name="wifi-off" size={width_numbers[13]} color="#ffffff90" />
         </TouchableOpacity>
       </View>
     );

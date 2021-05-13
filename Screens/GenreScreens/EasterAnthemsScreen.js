@@ -23,10 +23,7 @@ const EasterAnthemsScreen = ({
 
     return () => (cleanUp = false);
   }, []);
-
-  console.log('INFO FROM EASTERANTHEMS SCREEN >>>>  christmasAnthems songs: ',easterAnthems)
-  console.log('INFO FROM EASTERANTHEMS SCREEN >>>>  errorLoadingchristmasAnthemsState: ',errorLoadingEasterAnthemsState)
-  console.log('INFO FROM EASTERANTHEMS SCREEN >>>>  loadingchristmasAnthemsState: ',loadingEasterAnthems)
+  
   const onFetchSongs = React.useCallback(() => { });
 
   return (

@@ -14,7 +14,7 @@ export const colors = {
 } 
 export const error_screen_colors = {
     text_color: '#ffffff', 
-    text_box_color: '#5488d3'
+    text_box_color: '#5488d380'
 }
 export const browse_top_scrollbar_colors = {
     active_tab: '#5488d3',

@@ -175,19 +175,10 @@ const _downloadFunction = () => {
   return (
     <TouchableOpacity activeOpacity={1} style={card} onPress={toSkip}>
       <View style={cardCover}>
-        {/* <Image
-          source={
-            artwork == ''
-              ? require('../../assets/alternate_image.jpg')
-              : artwork == null
-              ? require('../../assets/alternate_image.jpg')
-              : artwork == undefined
-              ? require('../../assets/alternate_image.jpg')
-              : {uri: artwork}
-          }
+        <Image
+          source={require('../../assets/images/default.jpg')}
           style={cardCoverImage}
-        /> */}
-        <View style={[cardCoverImage,{backgroundColor: '#5488d3'}]} />
+        />
       </View>
       <View style={cardDetails}>
         <View

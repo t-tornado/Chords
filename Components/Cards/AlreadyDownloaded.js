@@ -50,19 +50,10 @@ const Card = ({artist, title, id, composer, numDownloads, artwork, likes}) => {
   return (
     <TouchableOpacity activeOpacity={0.9} style={card} onPress={skipFunc}>
       <View style={cardCover}>
-        {/* <Image
-          source={
-            artwork == ''
-              ? require('../../assets/alternate_image.jpg')
-              : artwork == null
-              ? require('../../assets/alternate_image.jpg')
-              : artwork == undefined
-              ? require('../../assets/alternate_image.jpg')
-              : {uri: artwork}
-          }
+        <Image
+          source={require('../../assets/images/default.jpg')}
           style={cardCoverImage}
-        /> */}
-        <View style={[cardCoverImage, {backgroundColor:'#5488d3'}]} />
+        />
       </View>
       <View style={cardDetails}>
         <Text
