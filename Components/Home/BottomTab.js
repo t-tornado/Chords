@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs'
 //Screens for bottom tab
 import MainBrowseComponent from '../../Components/Browse/MainBrowseComponent';
 import SearchScreen from '../../Screens/HomeButtonTabs/SearchScreen';
-import MyCollectionComponent from '../MyCollection/MyCollectionComponent'
+import MyCollectionScreen from '../../Screens/HomeButtonTabs/MyCollectionScreen'
 //icons
 import Entypo from 'react-native-vector-icons/Entypo'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -53,7 +53,7 @@ const BottomTabs = createBottomTabNavigator(
       },
     },
     list: {
-      screen: MyCollectionComponent,
+      screen: MyCollectionScreen,
       navigationOptions: {
         title: 'my collection',
         tabBarIcon: ({focused}) => {

@@ -1,14 +1,15 @@
 import React from "react";
 import {
-  Modal,
+  Animated,
   StyleSheet,
   View,
   Text,
   Dimensions,
   TouchableOpacity,
   Image,
+  StatusBar,
 } from "react-native";
-import {width_numbers} from '../../Config/Dimensions'
+import {HOME_BOTTOM_TABBAR_HEIGHT, width_numbers} from '../../Config/Dimensions'
 import {useCardOptionState, useToggleCardOptions} from '../../Context/openCardoptions'
 
 // icons
@@ -20,11 +21,20 @@ import { to_delete_song_screen_colors } from "../../Config/Colors";
 
 
 const { height, width } = Dimensions.get("window");
+const FULL_SCREEN = Dimensions.get('screen').height
+const {ValueXY} = Animated
 const MODAL_HEIGHT = height * 0.45;
 const MODAL_WIDTH = width * 0.95;
 const OPTION_HEADER_IMAGE_H = MODAL_HEIGHT * 0.185;
 const OPTION_HEADER_IMAGE_w = MODAL_HEIGHT * 0.185;
 
+const TRANSLATE_X = width * 0.025
+const TRANSLATE_Y = height * 0.55 + HOME_BOTTOM_TABBAR_HEIGHT
+
+const config = {
+    useNativeDriver: true,
+    bounciness: 10
+}
 
 const CardMenuScreen = () => {
 const toggleCardOptions = useToggleCardOptions()
@@ -33,58 +43,34 @@ const cardOptionState = useCardOptionState()
   const [modal, setModal] = React.useState(false);
   const [title, setTitle] = React.useState('Yensi Den');
   const [choir, setChoir] = React.useState('University Choir KNUST');
-//   const [artwork, setArtwork] = React.useState();
   const [composer, setComposer] = React.useState('Varrick Armah');
-//   const [id, setId] = React.useState(null);
-//   const deletSong = useDeleteSong();
-//   const openDeleteState = useOpenDeleteState();
-//   const closeDeleteAction = useCloseDelete();
-//   const fileToDelete = useFileToDelete();
-//   const likeSong = useLikeSong();
 
-  React.useEffect(() => {
-    let clean = true;
-    if (clean && cardOptionState) {
-      // setModal(true);
-//       setTitle(fileToDelete.title == null ? "Title" : fileToDelete.title);
-//       setChoir(fileToDelete.artist == null ? "Choir" : fileToDelete.artist);
-//       setComposer(
-//         fileToDelete.composer == null ? "Composer" : fileToDelete.composer
-//       );
-//       setId(fileToDelete.id);
-//       setArtwork(fileToDelete.artwork);
-    }
-    return () => (clean = false);
-  }, [cardOptionState]);
+  const translateY = React.useRef(new ValueXY({x:TRANSLATE_X,y:FULL_SCREEN})).current
+  const translation = Animated.spring(translateY, {
+    ...config,
+    toValue: {x:TRANSLATE_X, y:TRANSLATE_Y }
+  } )
 
+  cardOptionState && translation.start()
 
 function closeCardOptions() {
-  setModal(false)
   toggleCardOptions.close()
 }
 
   const deleteAction = () => {
-    // setModal(false);
-    // deletSong();
-    // closeDeleteAction();
   };
 
   const likeAction = () => {
-    // likeSong(true, "genre", id);
-    // setModal(false);
-    // closeDeleteAction();
   };
 
-  return (
-    // <Modal
-    //   style={styles.container}
-    //   visible={modal}
-    //   transparent={true}
-    //   animationType="slide"
-    // >
-   
+  if(!cardOptionState) return <View />
 
-      <Modal style={styles.container} transparent={true} visible={modal} animationType='slide'  >
+  return (
+   <Animated.View style={[translateY.getTranslateTransform(), {
+       flex:1,
+       position: 'absolute'
+   }]} >
+
         <View style={styles.cover} >
         <View style={styles.header}>
           <View style={styles.header_image}>
@@ -163,8 +149,7 @@ function closeCardOptions() {
           </TouchableOpacity>
         </View>
         </View>
-        {/* <View></View> */}
-      </Modal>
+   </Animated.View>
 
   );
 };
@@ -187,7 +172,6 @@ const styles = StyleSheet.create({
     height: MODAL_HEIGHT,
     width: MODAL_WIDTH,
     backgroundColor: to_delete_song_screen_colors.background,
-    marginTop: height - MODAL_HEIGHT,
     borderTopLeftRadius: width_numbers[15],
     borderTopRightRadius: width_numbers[15],
     alignSelf: "center",

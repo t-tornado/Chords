@@ -12,7 +12,7 @@ const {ValueXY} = Animated
 
 const POUPuP_WIDTH = width * 0.6;
 const POPUP_HEIGHT = height * 0.05;
-const TRANSLATE_X = width * 0.15
+const TRANSLATE_X = width * 0.2
 const TRANSLATE_Y = StatusBar.currentHeight 
 
 const config = {
