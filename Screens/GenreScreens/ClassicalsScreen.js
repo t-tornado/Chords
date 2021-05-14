@@ -12,14 +12,14 @@ import { width_numbers } from "../../Config/Dimensions";
 import { fetchClassicals } from "../../Redux/Actions/ClassicalsActions";
 
 const ClassicalsScreen = ({
-  classicals, loadingClassicals, fetchClassicalFromStore
+  classicals, loadingClassicals, fetchClassicalFromStore,errorLoadingClassicalsState
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchClassicalFromStore();
+      fetchClassicalFromStore();
     }
 
     return () => (cleanUp = false);
@@ -35,7 +35,7 @@ const ClassicalsScreen = ({
       <View style={listBody}>
         <FlatList
           data={classicals}
-          ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
+          ListEmptyComponent={() => (<SongLoadingFailureScreen  loadingError={errorLoadingClassicalsState}/>)}
           refreshControl={
             <RefreshControl
               refreshing={loadingClassicals}

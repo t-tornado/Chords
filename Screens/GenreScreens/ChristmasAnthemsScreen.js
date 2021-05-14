@@ -12,14 +12,14 @@ import { width_numbers } from "../../Config/Dimensions";
 import { fetchChristmasAnthems } from "../../Redux/Actions/ChristmasAnthemsActions";
 
 const ChristmasAnthemsScreen = ({ 
-  christmasAnthems, loadingChristmasAnthems, fetchChristmasAnthemsFromStore
+  christmasAnthems, loadingChristmasAnthems, fetchChristmasAnthemsFromStore,errorLoadingchristmasAnthems
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchChristmasAnthemsFromStore()
+      fetchChristmasAnthemsFromStore()
     }
 
     return () => (cleanUp = false);
@@ -34,7 +34,7 @@ const ChristmasAnthemsScreen = ({
       <View style={listBody}>
         <FlatList
           data={christmasAnthems}
-          ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
+          ListEmptyComponent={() => (<SongLoadingFailureScreen loadingError={errorLoadingchristmasAnthems} />)}
           refreshControl={
             <RefreshControl
               refreshing={loadingChristmasAnthems}

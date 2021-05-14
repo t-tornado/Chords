@@ -24,16 +24,20 @@ export function fetchAnthems() {
     dispatch(fetchAnthemsRequest());
     try {
       firebase.auth().onAuthStateChanged((user) => {
-        // console.log('INFO FROM ANTHEMS ACTIONS  >>>>: after dispatching fetching anthems request')
+        
         if (user) {
           db.collection("anthems")
             .get()
             .then((querySnapshot) => {
+              querySnapshot.forEach(docs => console.log('DOCS SNAP: ',docs.data()))
+              // console.log('NFO FROM ANTHEMS ACTIONS  >>>> document snapshot object from query snapshot object ', querySnapshot)
               let tracks = [];
               querySnapshot
-                .forEach((documentSnapshot) => {
+              .forEach((documentSnapshot) => {
+                console.log(documentSnapshot.data())
                   tracks.push(documentSnapshot.data());
                   dispatch(fetchAnthemsSuccess(tracks));
+                  console.log('INFO FROM ANTHEMS ACTIONS  >>>>: anthems fetched successfully. ', tracks)
                 })
                 .catch((e) => {
                   dispatch(fetchAnthemsFailure());
@@ -41,7 +45,7 @@ export function fetchAnthems() {
             })
             .catch((error) => {
               dispatch(fetchAnthemsFailure());
-              // console.log('INFO FROM ANTHEMS ACTIONS  >>>>: dispatching fetching anthems error  ')
+              console.log('INFO FROM ANTHEMS ACTIONS  >>>>: dispatching fetching anthems error  ',error)
             });
         }
         if (!user) {

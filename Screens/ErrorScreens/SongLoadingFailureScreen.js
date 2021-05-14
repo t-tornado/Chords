@@ -34,16 +34,28 @@ const MODAL_WIDTH = width;
 
 
 const SongLodingFailureScreen = ({
-  fetchStoreAnthems
+  fetchStoreAnthems, 
+  fetchStoreChoralBlues, 
+  fetchStoreChristmasAnthems,
+  fetchStoreClassicals,
+  fetchStoreEasterAnthems,
+  fetchStoreHighlifes, 
+  fetchStoreHymns, 
+  loadingError
 }) => {
   let { errorContainer, text, modal } = styles;
 
 
   const reloadSongss = React.useCallback(() => {
     fetchStoreAnthems()
-    // console.log('INFO FROM SONGS LOADING FAILURE SCREEN >>>> Error button tapped')
+    fetchStoreChoralBlues()
+    fetchStoreChristmasAnthems()
+    fetchStoreClassicals()
+    fetchStoreEasterAnthems()
+    fetchStoreHighlifes()
+    fetchStoreHymns()
   });
-  // if(loadingError) {
+  if(!loadingError) return <View />
     return (
       <View style={modal}>
         <Text style={text}>Could not connect </Text>
@@ -84,7 +96,12 @@ const styles = StyleSheet.create({
 const mapDispatch = dispatch => {
   return{ 
     fetchStoreAnthems: () => dispatch(fetchAnthems()), 
-    
+    fetchStoreChoralBlues: () => dispatch(fetchChoralBlues()),
+    fetchStoreClassicals: () => dispatch(fetchClassicals()),
+    fetchStoreChristmasAnthems: () => dispatch(fetchChristmasAnthems()), 
+    fetchStoreEasterAnthems: () => dispatch(fetchEasterAnthems()), 
+    fetchStoreHighlifes: () => dispatch(fetchKelencha()),
+    fetchStoreHymns: () => dispatch(fetchHymns()) 
   }
 }
 

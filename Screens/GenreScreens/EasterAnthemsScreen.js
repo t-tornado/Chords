@@ -12,14 +12,14 @@ import { width_numbers } from "../../Config/Dimensions";
 import { fetchEasterAnthems } from "../../Redux/Actions/EasterAnthemsActions";
 
 const EasterAnthemsScreen = ({
-  easterAnthems, loadingEasterAnthems, fetchEasterAnthemsFromStore
+  easterAnthems, loadingEasterAnthems, fetchEasterAnthemsFromStore,errorLoadingEasterAnthemsState
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchEasterAnthemsFromStore();
+      fetchEasterAnthemsFromStore();
     }
 
     return () => (cleanUp = false);
@@ -32,7 +32,7 @@ const EasterAnthemsScreen = ({
       <View style={listBody}>
         <FlatList
           data={easterAnthems}
-          ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
+          ListEmptyComponent={() => (<SongLoadingFailureScreen loadingError={errorLoadingEasterAnthemsState} />)}
           refreshControl={
             <RefreshControl
               refreshing={loadingEasterAnthems}

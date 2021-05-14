@@ -11,14 +11,14 @@ import { width_numbers } from "../../Config/Dimensions";
 import { fetchHymns } from "../../Redux/Actions/HymnActions";
 
 const HymnsScreen = ({
-  hymns, loadinghymns, fetchHymnsFromStore
+  hymns, loadinghymns, fetchHymnsFromStore,errorLoadinghymns
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchHymnsFromStore();
+      fetchHymnsFromStore();
     }
 
     return () => (cleanUp = false);
@@ -31,7 +31,7 @@ const HymnsScreen = ({
       <View style={listBody}>
         <FlatList
           data={hymns}
-          ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
+          ListEmptyComponent={() => (<SongLoadingFailureScreen loadingError={errorLoadinghymns} />)}
           refreshControl={
             <RefreshControl
               refreshing={loadinghymns}

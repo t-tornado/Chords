@@ -29,6 +29,7 @@ const AnthemsScreen = ({
     return () => (cleanUp = false);
   }, [anthemsSongs]);
   
+console.log('INFO FROM ANTHEMS SCREEN >>> Anthems songs from backend: ', anthemsSongs)
 
   
 const onFetchSongs = React.useCallback(() => { });
@@ -39,7 +40,7 @@ const onFetchSongs = React.useCallback(() => { });
       <View style={listBody}>
         <FlatList
           data={empty}
-          ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
+          ListEmptyComponent={() => (<SongLoadingFailureScreen loadingError={errorLoadingAnthemsState} />)}
           refreshControl={
             <RefreshControl
               refreshing={loadingAnthemsState}

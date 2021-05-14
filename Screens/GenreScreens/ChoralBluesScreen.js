@@ -12,14 +12,14 @@ import { width_numbers } from "../../Config/Dimensions";
 import { fetchChoralBlues } from "../../Redux/Actions/ChoralBlues";
 
 const ChoralBleusScreen = ({
-  choralBlues, loadingChoralBlues, fetchChoralBluesFromStore
+  choralBlues, loadingChoralBlues, fetchChoralBluesFromStore, errorLoadingChoralBluesState
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchChoralBluesFromStore()
+      fetchChoralBluesFromStore()
     }
 
     return () => (cleanUp = false);
@@ -33,7 +33,7 @@ const onFetchSongs = React.useCallback(() => { });
       <View style={listBody}>
         <FlatList
           data={choralBlues}
-          ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
+          ListEmptyComponent={() => (<SongLoadingFailureScreen loadingError={errorLoadingChoralBluesState} />)}
           refreshControl={
             <RefreshControl
               refreshing={loadingChoralBlues}

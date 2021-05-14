@@ -9,16 +9,17 @@ import SongLoadingFailureScreen from '../ErrorScreens/SongLoadingFailureScreen'
 import {songs} from '../../assets/audio_store'
 
 import { width_numbers } from "../../Config/Dimensions";
+import { fetchKelencha } from "../../Redux/Actions/KelenchaActions";
 
 const HighlifesScreen = ({
-  highlifes, loadingHighlifes, fetchHighlifesFromStore
+  highlifes, loadingHighlifes, fetchHighlifesFromStore,errorLoadingHighlifes
 }) => {
   let { container, listBody } = styles;
 
   useEffect(() => {
     let cleanUp = true;
     if (cleanUp) {
-      // fetchHighlifesFromStore();
+      fetchHighlifesFromStore();
     }
 
     return () => (cleanUp = false);
@@ -32,7 +33,7 @@ const HighlifesScreen = ({
       <View style={listBody}>
         <FlatList
           data={highlifes}
-          ListEmptyComponent={() => (<SongLoadingFailureScreen />)}
+          ListEmptyComponent={() => (<SongLoadingFailureScreen loadingError={errorLoadingHighlifes} />)}
           refreshControl={
             <RefreshControl
               refreshing={loadingHighlifes}
@@ -68,7 +69,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    fetchHighlifesFromStore: () => dispatch(fetchEasterAnthems())
+    fetchHighlifesFromStore: () => dispatch(fetchKelencha())
   }
 }
 
