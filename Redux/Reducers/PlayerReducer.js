@@ -30,7 +30,7 @@ export const playerReducer = (state = playerState, action) => {
         ...state,
         searchKeyword: action.payload,
       };
-    } else if (action.type == actionType.OPEN_DELETE) {
+    } else if (action.type == actionType.OPEN_DOWNLOADED_SONG_OPTION) {
       return {
         ...state,
         openCardOptions: true,

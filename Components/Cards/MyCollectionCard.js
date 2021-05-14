@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import {useToggleCardOptions} from '../../Context/openCardoptions'
+import {useSetSongToDelete, useToggleCardOptions} from '../../Context/openCardoptions'
 import { width_numbers } from "../../Config/Dimensions";
 import { song_card_colors } from "../../Config/Colors";
 
@@ -25,15 +25,13 @@ export default function CardWithoutDownloadButton({
   artWork,
   genre,
   duration,
+  likes
 }) {
   let { card, cardCover, cardCoverImage, cardDetails, cardIcons } = styles;
-  // const openDeleteState = useOpenDeleteState();
-  // const playerLoadedState = usePlayerLoadedState();
-  // const downloadsLoadedState = useDownloadsLoadedState();
-  // const openDelete = useOpenDelete();
-  // const skipOffline = useSkipOffline();
-  // const openStoreMax = useSetStoreOpenMax();
+
+
   const toggleCardOption = useToggleCardOptions()
+  const setSongToDeleteAction = useSetSongToDelete()
 
   React.useEffect(() => {
     let cleanUp = true;
@@ -51,24 +49,13 @@ export default function CardWithoutDownloadButton({
 
   const openCardOptions = () => {
     toggleCardOption.open()
+    setSongToDeleteAction(id,title,artist,artWork,composer,duration,genre,likes)
   };
 
   return (
     <TouchableOpacity style={card} activeOpacity={0.9} onPress={toPlay}>
       <View style={cardCover}>
-        {/* <Image
-          source={
-            artWork == ""
-              ? require("../../assets/alternate_image.jpg")
-              : artWork == null
-              ? require("../../assets/alternate_image.jpg")
-              : artWork == undefined
-              ? require("../../assets/alternate_image.jpg")
-              : { uri: artWork }
-          }
-          style={cardCoverImage}
-        /> */}
-        <View style={[cardCoverImage,{backgroundColor: '#5488d3'}]} />
+        <Image source={artWork} style={cardCoverImage} />
       </View>
       <View style={cardDetails}>
         <Text

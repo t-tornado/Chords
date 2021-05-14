@@ -37,6 +37,7 @@ const MyCollectionScreen = () => {
               artWork={item.artwork}
               genre={item.genre}
               duration={item.duration}
+              likes={item.likes}
             />
           )}
         />     

@@ -2,7 +2,7 @@ export const songs = [
   {
     title: 'Amazing Grace',
     artist: 'University Choir KNUST',
-    artwork: '',
+    artwork: require('./images/default.jpg'),
     // url: require('./audio_files/AMAZING GRACE.mp3'),
     id: '01',
     duration: 233,
@@ -10,12 +10,14 @@ export const songs = [
     composer: 'Kenn Kafui',
     likes: 9908700,
     downloads: 6528568,
-    downloaded: true
+    downloaded: true,
   },
   {
     title: 'Ma Me Nhu Wo',
-    artist: 'University Choir KNUST University Choir KNUST University Choir KNUST',
-    artwork: '',
+    artist:
+      'University Choir KNUST University Choir KNUST University Choir KNUST',
+    artwork: require('./images/default.jpg'),
+
     // url: require('../ /audio_files/MA ME NHU WO.mp3'),
     id: '02',
     duration: '',
@@ -23,12 +25,13 @@ export const songs = [
     composer: 'Doc. Adusei',
     likes: 1288456,
     downloads: 8456237,
-    downloaded: false
+    downloaded: false,
   },
   {
     title: 'Nkunim',
     artist: 'University Choir KNUST',
-    artwork: '',
+    artwork: require('./images/default.jpg'),
+
     // url: require('./audio_files/NKUNIM.mp3'),
     id: '03',
     duration: 228,
@@ -36,12 +39,12 @@ export const songs = [
     composer: 'Patrick Addaquaye',
     likes: 200,
     downloads: 901,
-    downloaded: false
+    downloaded: false,
   },
   {
     title: 'Yensi Den Nkamfo Wo',
     artist: 'University Choir KNUST',
-    artwork: '',
+    artwork: require('./images/default.jpg'),
     // url: require('./audio_files/YƐNSI DƐN NKAMFO WO.mp3'),
     id: '04',
     duration: 353,
@@ -49,13 +52,12 @@ export const songs = [
     composer: 'Varrick Armah',
     likes: 400,
     downloads: 811,
-    downloaded: true
-
+    downloaded: true,
   },
   {
     title: 'Gloria In Excelsis',
+    artwork: require('./images/default.jpg'),
     artist: 'University Choir KNUST',
-    artwork: '',
     // url: require('./audio_files/YƐNSI DƐN NKAMFO WO.mp3'),
     id: '05',
     duration: 353,
@@ -63,13 +65,12 @@ export const songs = [
     composer: 'G.F. Handel',
     likes: 400,
     downloads: 811,
-    downloaded: true
-
+    downloaded: true,
   },
   {
     title: 'Amazing Love',
     artist: 'University Choir KNUST',
-    artwork: '',
+    artwork: require('./images/default.jpg'),
     // url: require('./audio_files/AMAZING GRACE.mp3'),
     id: '06',
     duration: 233,
@@ -77,6 +78,6 @@ export const songs = [
     composer: 'Mendelson',
     likes: 9908700,
     downloads: 6528568,
-    downloaded: true
-  }
+    downloaded: true,
+  },
 ];

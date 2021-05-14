@@ -37,10 +37,6 @@ const Card = ({artist, title, id, composer, numDownloads, artwork, likes}) => {
     iconContainer,
     downloadButton
   } = styles;
-  // const skip = useSkipOffline();
-  // const downloadsLoadedState = useDownloadsLoadedState();
-  // const playerLoadedState = usePlayerLoadedState();
-  // const openStoreMax = useSetStoreOpenMax();
 
   const skipFunc = () => {
     // skip(`10000000000${id}`, playerLoadedState, downloadsLoadedState, true);

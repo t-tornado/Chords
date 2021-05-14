@@ -30,7 +30,7 @@ export function setSearchKeyword(keyword) {
     payload: keyword,
   };
 }
-
+ 
 export function loadPlayer() {
   return {
     type: actionType.LOAD_PLAYER,

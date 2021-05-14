@@ -68,7 +68,7 @@ export let playerState = {
       artist: "",
       genre: "",
       duration: "",
-      composer: "",
+      composer: "", 
       likes: 0,
       artwork: "",
     },

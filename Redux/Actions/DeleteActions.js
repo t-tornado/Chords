@@ -38,9 +38,9 @@ export const deleteSong = (title,id,artist,genre,duration,composer) => {
     }
 }
 
-export const openDelete = (title,id,artist, genre, duration,composer,likes,artwork) => {
+export const openDelete = (id,title,artist,artwork,composer,duration, genre, likes) => {
     return {
-        type: actions.OPEN_DELETE,
+        type: actions.OPEN_DOWNLOADED_SONG_OPTION,
         payload: {
             id,
             title, 
@@ -56,7 +56,7 @@ export const openDelete = (title,id,artist, genre, duration,composer,likes,artwo
 
 export const closeDelete = () => {
     return {
-        type: actions.CLOSE_DELETE
+        type: actions.CLOSE_DOWNLOADED_SONG_OPTION
     }
 }
 

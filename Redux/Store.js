@@ -15,7 +15,7 @@ import {downlaodsReducer} from './Reducers/DownloadsReducer'
 const rootReducer = combineReducers({
   hymns: hymnReducer,
   kelencha: kelenchaReducer,
-  anthems: anthemReducer,
+  anthems: anthemReducer, 
   classicals: classicalsReducer,
   player: playerReducer,
   downloads: downlaodsReducer,

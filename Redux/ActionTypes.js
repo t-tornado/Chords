@@ -75,6 +75,7 @@ export const SET_DOWNLOAD_PROGRESS = "setDownloadProgress";
 ///DELETE ACTIONS
 export const DELETE_SONG_REQUEST = "deletSongRequest";
 export const DELETE_SONG_SUCCESS = "deleteSongSuccess";
-export const OPEN_DELETE = "openDelete";
-export const CLOSE_DELETE = "closeDelete";
+export const OPEN_DOWNLOADED_SONG_OPTION = "openDownloadedCardOption";
+export const CLOSE_DOWNLOADED_SONG_OPTION = "closeDownloadedCardOption";
 export const AFTER_DELETE_SUCESS = "afterDeleteSuccess";
+ 

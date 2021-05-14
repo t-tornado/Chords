@@ -1,5 +1,5 @@
 import React from 'react'
-import {OpenCardOptionsContext} from './openCardoptions'
+import OpenCardOptionsContext from './openCardoptions'
 
 const MainAppContext = (props) => {
 

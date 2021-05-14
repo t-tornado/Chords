@@ -10,7 +10,7 @@ import {
   StatusBar,
 } from "react-native";
 import {HOME_BOTTOM_TABBAR_HEIGHT, width_numbers} from '../../Config/Dimensions'
-import {useCardOptionState, useToggleCardOptions} from '../../Context/openCardoptions'
+import {useCardOptionState, useSongToDelete, useToggleCardOptions} from '../../Context/openCardoptions'
 
 // icons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -39,6 +39,7 @@ const config = {
 const CardMenuScreen = () => {
 const toggleCardOptions = useToggleCardOptions()
 const cardOptionState = useCardOptionState()
+const songToDelete = useSongToDelete()
 
   const [modal, setModal] = React.useState(false);
   const [title, setTitle] = React.useState('Yensi Den');
@@ -87,7 +88,7 @@ function closeCardOptions() {
               numberOfLines={1}
               ellipsizeMode="tail"
             >
-              {title}
+              {songToDelete.title}
             </Text>
             <Text
               style={{
@@ -95,15 +96,17 @@ function closeCardOptions() {
                 fontSize: width_numbers[10],
               }}
             >
-              {composer}
+              {songToDelete.composer}
             </Text>
             <Text
+            numberOfLines={2}
+            ellipsizeMode='tail'
               style={{
                 color: to_delete_song_screen_colors.choir,
                 fontSize: width_numbers[12],
               }}
             >
-              {choir}
+              {songToDelete.artist}
             </Text>
           </View>
         </View>
